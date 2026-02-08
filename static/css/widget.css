@@ -92,7 +92,7 @@
 }
 
 /* ========================================================================= */
-/* PANEL NAVIGATION */
+/* PANEL NAVIGATION STYLE DEFINITIONS */
 
 .panel header nav a {
     color: var(--text-colour-secondary);
@@ -138,4 +138,84 @@
     color: var(--text-colour-secondary);
     font-family: var(--font-mono);
     font-size: var(--font-size-xs);
+}
+
+/* ========================================================================= */
+/* TABLE STYLE DEFINITIONS */
+
+.table-container {
+    background-color: var(--bg-colour-primary);
+    border: 1px solid var(--border-colour-primary);
+}
+
+table th {
+    background-color: var(--bg-colour-secondary);
+    color: var(--text-colour-primary);
+    font-weight: bold;
+    font-size: var(--font-size-s);
+    border-bottom: 2px solid var(--border-colour-primary);
+}
+
+table td {
+    color: var(--text-colour-primary);
+    font-size: var(--font-size-s);
+    border-bottom: 1px solid var(--border-colour-secondary);
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--bg-colour-secondary);
+}
+
+table tbody tr:hover {
+    background-color: var(--bg-colour-tertiary);
+}
+
+.btn-icon {
+    background: transparent;
+    border: 1px solid var(--border-colour-secondary);
+    border-radius: var(--radius-sm);
+    color: var(--text-colour-secondary);
+    cursor: pointer;
+    padding: var(--space-xs);
+    font-size: var(--font-size-s);
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    background-color: var(--bg-colour-tertiary);
+    color: var(--text-colour-primary);
+    border-color: var(--border-colour-primary);
+}
+
+.btn-icon.destructive:hover {
+    color: var(--text-colour-error);
+    border-color: var(--text-colour-error);
+}
+
+.pagination a.control {
+    text-decoration: none;
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: var(--text-colour-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-s);
+    border-radius: var(--radius-sm);
+}
+
+.pagination a.control:hover:not(.disabled) {
+    background-color: var(--bg-colour-secondary);
+    border-color: var(--border-colour-primary);
+}
+
+.pagination a.control.disabled {
+    color: var(--text-colour-tertiary);
+    pointer-events: none;
+    opacity: 0.5;
 }

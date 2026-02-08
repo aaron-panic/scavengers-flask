@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "components/table.html" as Table %}
+{% import "components/panel.html" as Panel %}
+
+{% block content %}
+<article class="panel">
+    <header>
+        <h1>User Management</h1>
+        <p class="subtitle">System Administration</p>
+    </header>
+
+    <section class="content">
+        {{ Table.render(columns=columns, rows=rows, pagination=pagination) }}
+    </section>
+</article>
+{% endblock %}

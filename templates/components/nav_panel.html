@@ -10,7 +10,7 @@
             <ul>
                 {% for item in data %}
                 <li>
-                    <a href="/nav_panel/{{ item.slug }}" 
+                    <a href="?tab={{ item.slug }}" 
                        class="{{ 'current' if item.slug == active_slug else '' }}"
                        {% if item.slug == active_slug %}aria-current="page"{% endif %}>
                         {{ item.label }}
@@ -22,16 +22,12 @@
     </header>
 
     <section class="content">
-        {{ active_item.content }}
+        {% if caller %}
+            {{ caller() }}
+        {% else %}
+            {{ active_item.content }}
+        {% endif %}
     </section>
 
-    <footer>
-        <nav class="pagination" aria-label="Pagination">
-            <button class="control" disabled>&larr; Prev</button>
-            <span class="status">Page 1 of 1</span>
-            <button class="control" disabled>Next &rarr;</button>
-        </nav>
-    </footer>
-
-</article>
+    </article>
 {% endmacro %}

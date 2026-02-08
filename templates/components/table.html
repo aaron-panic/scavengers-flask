@@ -1,0 +1,45 @@
+{% macro render(columns, rows, pagination=None, actions=None, classes=[]) %}
+<div class="table-container {{ classes|join(' ') }}">
+    <table>
+        <thead>
+            <tr>
+                {% for col in columns %}
+                <th scope="col" class="{{ col.class if col.class else '' }}">{{ col.label }}</th>
+                {% endfor %}
+                <th scope="col" class="col-actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for col in columns %}
+                <td class="{{ col.class if col.class else '' }}">{{ row[col.key] }}</td>
+                {% endfor %}
+                
+                <td class="col-actions">
+                    <div class="action-group">
+                        {% if actions %}
+                            {% for action in actions %}
+                            <button class="btn-icon {{ action.class }}" aria-label="{{ action.label }}" title="{{ action.label }}">
+                                {{ action.icon | safe }}
+                            </button>
+                            {% endfor %}
+                        {% else %}
+                            <button class="btn-icon" aria-label="Details" title="Details">&#8505;</button>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if pagination %}
+<nav class="pagination" aria-label="Table Navigation">
+    <a href="?tab={{ request.args.get('tab', 'users') }}&page={{ pagination.prev_num }}" class="control {{ 'disabled' if not pagination.has_prev else '' }}" {% if not pagination.has_prev %}aria-disabled="true"{% endif %}>&larr; Prev</a>
+    <span class="status">Page {{ pagination.page }} of {{ pagination.pages }}</span>
+    <a href="?tab={{ request.args.get('tab', 'users') }}&page={{ pagination.next_num }}" class="control {{ 'disabled' if not pagination.has_next else '' }}" {% if not pagination.has_next %}aria-disabled="true"{% endif %}>Next &rarr;</a>
+</nav>
+{% endif %}
+{% endmacro %}
