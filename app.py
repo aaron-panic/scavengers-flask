@@ -44,7 +44,6 @@ def index():
 def test_widget(widget_name):
     """
     Dynamic route to load test templates.
-    Accessing /panel tries to load templates/workbench/test_panel.html
     """
     try:
         return render_template(f'workbench/test_{widget_name}.html')
@@ -100,12 +99,16 @@ def admin_panel():
     """
     data = load_mock_data()
     
-    active_tab = request.args.get('tab', 'users')
+    requested_tab = request.args.get('tab', 'users')
     
     nav_structure = [
         {'slug': 'users', 'label': 'Users', 'title': 'User Administration'},
         {'slug': 'announcements', 'label': 'Announcements', 'title': 'System Announcements'}
     ]
+    
+    # VALIDATION FIX: Ensure requested tab exists, otherwise default to 'users'
+    valid_slugs = [item['slug'] for item in nav_structure]
+    active_tab = requested_tab if requested_tab in valid_slugs else 'users'
     
     rows = []
     columns = []
@@ -185,9 +188,13 @@ def test_nav_panel(slug=None):
     data = load_mock_data()
     nav_items = data.get('family', {}).get('navigation', [])
     
-    # Default to the first item if no slug provided
-    if not slug and nav_items:
-        slug = nav_items[0]['slug']
+    valid_slugs = [item['slug'] for item in nav_items]
+    
+    if not slug or slug not in valid_slugs:
+        if nav_items:
+            slug = nav_items[0]['slug']
+        else:
+            return "No navigation data found", 404
         
     return render_template('workbench/test_nav_panel.html', active_slug=slug)
 
