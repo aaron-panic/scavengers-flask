@@ -1,0 +1,38 @@
+{
+  "standard_all": {
+    "header": {
+      "title": "The Battery Blanket Lifestyle",
+      "subtitle": "Extension cords are the new leash",
+      "username": "PluggedIn780",
+      "timestamp": "2026-02-08 07:30:00"
+    },
+    "content": "There is a special bond between an Edmontonian and their extension cord. It is an umbilical cord of survival. You snake it across the sidewalk, creating a tripping hazard for the neighbors, just so your engine block doesn't turn into a solid cube of regret.\n\nDriving away with it still plugged in is a rite of passage. That snapping sound is the sound of freedom, followed immediately by the sound of shame.",
+    "footer": "See related: How to fix a severed cord with electrical tape at -30C."
+  },
+  "standard_subtitle": {
+    "header": {
+      "title": "Windrow Woes",
+      "subtitle": "The Great Wall of Edmonton",
+      "username": "ShovelMaster",
+      "timestamp": "2026-02-08 08:15:00"
+    },
+    "content": "The grader came by! The road is smooth! But wait, what is this monolithic barrier across my driveway?\n\nIt is the Windrow. A frozen mixture of ice, gravel, and hatred. It weighs as much as a small sedan and requires a pickaxe to dismantle. The city calls it 'efficient clearing.' I call it 'mandatory CrossFit.'"
+  },
+  "standard_footer": {
+    "header": {
+      "title": "Bus Stop Yoga",
+      "username": "TransitTough",
+      "timestamp": "2026-02-08 12:00:00"
+    },
+    "content": "To stay warm at the bus stop requires constant movement. We call it 'The Shiver Shimmy.' You hop from foot to foot, tuck your chin, and vibrate.\n\nIt looks like a nervous breakdown, but it is actually a sophisticated thermal regulation technique. We are all just vibrating molecules trying not to freeze in place.",
+    "footer": "Next bus status: Delayed (Obviously)"
+  },
+  "standard_minimal": {
+    "header": {
+      "title": "Darkness at Noon",
+      "username": "SunSeeker",
+      "timestamp": "2026-02-08 16:30:00"
+    },
+    "content": "I saw the sun today. It appeared at 10:00 AM, skirted the horizon like it was afraid of us, and dipped out by 3:30 PM.\n\nWe now enter the Long Dark. The time of artificial lights and Vitamin D supplements. Remember the sun? It was nice. We might see it again in May."
+  }
+}

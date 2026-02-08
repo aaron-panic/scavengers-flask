@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "components/panel.html" as Panel %}
+
+{% block content %}
+<h1>Panel Widget Test</h1>
+
+{{ Panel.render(
+    data=mock.article.standard_all, 
+    classes=['full-width', 'theme-primary']
+) }}
+
+{{ Panel.render(
+    data=mock.article.standard_subtitle, 
+    classes=['half-width']
+) }}
+
+{{ Panel.render(
+    data=mock.article.standard_footer, 
+    classes=['half-width']
+) }}
+
+{{ Panel.render(
+    data=mock.article.standard_minimal, 
+    classes=['minimal', 'alert']
+) }}
+
+{% endblock %}

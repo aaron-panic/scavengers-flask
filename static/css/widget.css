@@ -1,0 +1,90 @@
+/* PANEL STYLE DEFINITIONS */
+.panel {
+    background-color: var(--bg-colour-primary);
+    border: 1px solid var(--border-colour-primary);
+    color: var(--text-colour-primary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-standard);
+}
+
+.panel header {
+    background-color: var(--bg-colour-secondary);
+    border-bottom: 1px solid var(--border-colour-secondary);
+    color: var(--text-colour-primary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-standard);
+}
+
+.panel header h1 {
+    background-color: transparent;
+    border: none;
+    color: var(--text-colour-primary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-compact);
+}
+
+.panel header .subtitle {
+    background-color: transparent;
+    border: none;
+    color: var(--text-colour-secondary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-l);
+    line-height: var(--line-height-compact);
+}
+
+.panel header .meta {
+    background-color: transparent;
+    border: none;
+    color: var(--text-colour-tertiary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-compact);
+}
+
+.panel header .meta dt {
+    background-color: transparent;
+    border: none;
+    color: var(--text-colour-tertiary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-compact);
+}
+
+.panel header .meta dd {
+    background-color: transparent;
+    border: none;
+    color: var(--text-colour-secondary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-compact);
+}
+
+.panel header .meta time {
+    background-color: transparent;
+    border: none;
+    color: var(--text-colour-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-compact);
+}
+
+.panel .content {
+    background-color: var(--bg-colour-primary);
+    border: none;
+    color: var(--text-colour-primary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-standard);
+}
+
+.panel footer {
+    background-color: var(--bg-colour-tertiary);
+    border-top: 1px solid var(--border-colour-secondary);
+    color: var(--text-colour-secondary);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-compact);
+}

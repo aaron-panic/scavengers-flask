@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="library-index">
+        <header>
+            <h1>Component Library</h1>
+            <p>Select a widget to view its states and variants.</p>
+        </header>
+
+        <nav aria-label="Widget Directory">
+            <ul>
+                <li>
+                    <article class="card">
+                        <h2><a href="/panel">Panel Widget</a></h2>
+                        <p>Standard container for content blocks. Supports headers, footers, and varying content types.</p>
+                        <dl>
+                            <dt>Status</dt>
+                            <dd>Drafting</dd>
+                            <dt>Variants</dt>
+                            <dd>4</dd>
+                        </dl>
+                    </article>
+                </li>
+                </ul>
+        </nav>
+    </section>
+
+    <section class="data-inspector">
+        <header>
+            <h2>Loaded Mock Data</h2>
+        </header>
+        <details>
+            <summary>View Raw JSON Context</summary>
+            <pre><code>{{ mock|tojson(indent=2) }}</code></pre>
+        </details>
+    </section>
+{% endblock %}

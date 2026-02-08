@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scavengers Widget Workbench</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/widget.css') }}">
+</head>
+<body>
+    
+    <header class="base-header">
+        <nav>
+            <a href="/">Workbench Home</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

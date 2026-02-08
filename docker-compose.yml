@@ -1,0 +1,11 @@
+services:
+  scavengers-flask:
+    build: .
+    container_name: scavengers-flask
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./:/app
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1

@@ -1,0 +1,140 @@
+/* ========================================================================= */
+/* RESET */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+/* ========================================================================= */
+/* BASE LAYOUT DEFINITIONS */
+
+.base-header {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-m);
+}
+
+.base-header nav {
+    display: block;
+    width: var(--width-full);
+}
+
+main {
+    display: block;
+    width: var(--width-full);
+    max-width: var(--width-max-main);
+    margin: var(--space-0) auto; /* Center the main container */
+    padding: var(--space-l);
+}
+
+/* ========================================================================= */
+/* PANEL LAYOUT DEFINITIONS */
+
+.panel {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    margin-bottom: var(--space-l);
+    padding: var(--space-0);
+    box-sizing: border-box;
+}
+
+.panel header {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-m);
+    box-sizing: border-box;
+}
+
+.panel header h1 {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    margin-bottom: var(--space-xs);
+    padding: var(--space-0);
+}
+
+.panel header .subtitle {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    margin-bottom: var(--space-s);
+    padding: var(--space-0);
+}
+
+.panel header .meta {
+    display: flex;
+    flex-direction: row;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+.panel header .meta dt {
+    display: block;
+    margin: var(--space-0);
+    margin-right: var(--space-xs);
+    padding: var(--space-0);
+    text-align: left;
+}
+
+.panel header .meta dd {
+    display: block;
+    margin: var(--space-0);
+    padding: var(--space-0);
+    text-align: left;
+}
+
+.panel header .meta dd:first-of-type {
+    margin-right: auto; 
+}
+
+.panel .content {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-m);
+    box-sizing: border-box;
+}
+
+.panel .content p {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    margin-bottom: var(--space-m);
+    padding: var(--space-0);
+}
+
+.panel .content p:last-child {
+    margin-bottom: var(--space-0);
+}
+
+.panel footer {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-s) var(--space-m);
+    box-sizing: border-box;
+}
+
+/* ========================================================================= */
+/* UTILITY */
+
+.hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; 
+}

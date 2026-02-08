@@ -1,0 +1,28 @@
+{% macro render(data, classes=[]) %}
+<article class="panel {{ classes|join(' ') }}">
+    <header>
+        <h1>{{ data.header.title }}</h1>
+        
+        {% if data.header.subtitle %}
+            <p class="subtitle">{{ data.header.subtitle }}</p>
+        {% endif %}
+
+        <dl class="meta">
+            <dt>by</dt>
+            <dd>{{ data.header.username }}</dd>
+            <dt class="hidden">date</dt>
+            <dd><time datetime="{{ data.header.timestamp }}">{{ data.header.timestamp }}</time></dd>
+        </dl>
+    </header>
+
+    <section class="content">
+        {{ data.content }}
+    </section>
+
+    {% if data.footer %}
+    <footer>
+        {{ data.footer }}
+    </footer>
+    {% endif %}
+</article>
+{% endmacro %}
