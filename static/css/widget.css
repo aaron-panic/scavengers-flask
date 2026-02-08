@@ -1,4 +1,6 @@
+/* ========================================================================= */
 /* PANEL STYLE DEFINITIONS */
+
 .panel {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-primary);
@@ -87,4 +89,53 @@
     font-family: var(--font-sans);
     font-size: var(--font-size-s);
     line-height: var(--line-height-compact);
+}
+
+/* ========================================================================= */
+/* PANEL NAVIGATION */
+
+.panel header nav a {
+    color: var(--text-colour-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-s);
+    border-bottom: 2px solid transparent;
+    padding-bottom: var(--space-xs);
+    display: block;
+}
+
+.panel header nav a:hover {
+    color: var(--text-colour-primary);
+}
+
+.panel header nav a.current {
+    color: var(--text-colour-primary);
+    border-bottom-color: var(--text-colour-primary);
+    font-weight: bold;
+}
+
+.panel footer nav.pagination .control {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: var(--text-colour-primary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.panel footer nav.pagination .control:hover:not(:disabled) {
+    background-color: var(--bg-colour-secondary);
+    border-color: var(--border-colour-primary);
+}
+
+.panel footer nav.pagination .control:disabled {
+    color: var(--text-colour-tertiary);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.panel footer nav.pagination .status {
+    color: var(--text-colour-secondary);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
 }

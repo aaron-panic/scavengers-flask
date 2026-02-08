@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "components/nav_panel.html" as NavPanel %}
+
+{% block content %}
+<h1>Navigation Panel Widget Test</h1>
+
+{{ NavPanel.render(
+    data=mock.family.navigation, 
+    active_slug=active_slug,
+    classes=['full-width']
+) }}
+
+{% endblock %}
