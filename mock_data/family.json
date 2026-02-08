@@ -1,0 +1,28 @@
+{
+  "navigation": [
+    {
+      "slug": "karen",
+      "label": "Karen",
+      "title": "The Philosopher Queen",
+      "content": "The organizational backbone of the operation. While others are busy writing spaghetti code, Karen is decoding the nature of existence at the University of Alberta. Her diet is a strict regime of Coke Zero and cigarettes, punctuated only by a profound love for all bakery items—especially bread. She brings a level of sophistication to the household that is otherwise entirely absent."
+    },
+    {
+      "slug": "sudo",
+      "label": "Sudo",
+      "title": "Command Line Canine",
+      "content": "Born October 10, 2025. Sudo does not beg; she communicates a critical system need for human food through the deployment of her beautiful eyes. She is a good girl, 100% of the time, efficiently executing commands to sit and stay (mostly when food is involved)."
+    },
+    {
+      "slug": "higgs",
+      "label": "Higgs",
+      "title": "The Boson Bark",
+      "content": "Born October 10, 2025. The particle that gives the household mass. Higgs possesses an exuberant, boundless energy and a lust for life that is unparalleled. He is responsible for binding the family together through sheer chaotic energy and an inability to understand the concept of 'personal space'."
+    },
+    {
+      "slug": "aaron",
+      "label": "Aaron",
+      "title": "Error 404: Competence Not Found",
+      "content": "The self-proclaimed 'architect' who thinks using a strongly-typed language is a personality trait. He maintains lofty ideas of how software design patterns are broken by the 'lego-nature' of assembling software, dreaming of a world where everyone codes properly. He is likely to be found yelling at a cloud provider about data sovereignty while his own local server uptime hovers around 80%."
+    }
+  ]
+}

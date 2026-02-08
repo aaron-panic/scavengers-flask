@@ -50,6 +50,21 @@ def test_widget(widget_name):
     except TemplateNotFound:
         abort(404)
 
+@app.route('/nav_panel')
+@app.route('/nav_panel/<slug>')
+def test_nav_panel(slug=None):
+    """
+    Specific route for the Navigation Panel widget to handle state.
+    """
+    data = load_mock_data()
+    nav_items = data.get('family', {}).get('navigation', [])
+    
+    # Default to the first item if no slug provided
+    if not slug and nav_items:
+        slug = nav_items[0]['slug']
+        
+    return render_template('workbench/test_nav_panel.html', active_slug=slug)
+
 if __name__ == '__main__':
     # Docker handles the port mapping, so we listen on 5000 internally
     app.run(host='0.0.0.0', port=5000, debug=True)

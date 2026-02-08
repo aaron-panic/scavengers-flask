@@ -125,6 +125,53 @@ main {
 }
 
 /* ========================================================================= */
+/* PANEL NAVIGATION */
+/* PANEL NAVIGATION */
+.panel header nav {
+    display: block;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+.panel header nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: var(--space-0);
+    padding: var(--space-0);
+    gap: var(--space-m);
+}
+
+.panel header nav li {
+    display: block;
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+.panel footer nav.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--width-full);
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+.panel footer nav.pagination .control {
+    display: block;
+    margin: var(--space-0);
+    padding: var(--space-xs) var(--space-s);
+}
+
+.panel footer nav.pagination .status {
+    display: block;
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+/* ========================================================================= */
 /* UTILITY */
 
 .hidden {

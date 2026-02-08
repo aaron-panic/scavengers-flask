@@ -1,0 +1,37 @@
+{% macro render(data, active_slug, classes=[]) %}
+{# Find the active item from the data list #}
+{% set active_item = data | selectattr('slug', 'equalto', active_slug) | first %}
+
+<article class="panel nav-panel {{ classes|join(' ') }}">
+    <header>
+        <h1>{{ active_item.title }}</h1>
+        
+        <nav aria-label="Section Navigation">
+            <ul>
+                {% for item in data %}
+                <li>
+                    <a href="/nav_panel/{{ item.slug }}" 
+                       class="{{ 'current' if item.slug == active_slug else '' }}"
+                       {% if item.slug == active_slug %}aria-current="page"{% endif %}>
+                        {{ item.label }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        {{ active_item.content }}
+    </section>
+
+    <footer>
+        <nav class="pagination" aria-label="Pagination">
+            <button class="control" disabled>&larr; Prev</button>
+            <span class="status">Page 1 of 1</span>
+            <button class="control" disabled>Next &rarr;</button>
+        </nav>
+    </footer>
+
+</article>
+{% endmacro %}
