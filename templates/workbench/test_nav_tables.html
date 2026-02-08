@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "components/nav_panel.html" as NavPanel %}
+{% import "components/table.html" as Table %}
+
+{% block content %}
+
+    {# 
+       We use the NavPanel as a wrapper. 
+       Inside the call block, we render the Table. 
+    #}
+    
+    {% call NavPanel.render(data=nav_data, active_slug=active_tab) %}
+        
+        {{ Table.render(
+            columns=columns, 
+            rows=rows, 
+            pagination=pagination, 
+            actions=actions
+        ) }}
+        
+    {% endcall %}
+
+{% endblock %}
