@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "components/nav_panel.html" as NavPanel %}
+{% import "components/subpanel_grid.html" as Grid %}
+{% import "components/form.html" as Form %}
+
+{% block content %}
+    
+    {% call NavPanel.render(data=nav_data, active_slug=active_tab) %}
+        
+        {% if active_tab == 'browse' %}
+            {{ Grid.render(
+                items=grid_items, 
+                pagination=pagination, 
+                active_filter=active_tag,
+                all_tags=all_tags
+            ) }}
+        {% elif active_tab == 'new' %}
+            {{ Form.render(data=form_data, embedded=True) }}
+        {% endif %}
+        
+    {% endcall %}
+
+{% endblock %}

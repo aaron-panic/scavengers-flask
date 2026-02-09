@@ -316,6 +316,63 @@ dialog.modal menu {
 }
 
 /* ========================================================================= */
+/* SUBPANEL GRID LAYOUT */
+.subpanel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-m);
+    padding: var(--space-m);
+}
+
+.subpanel-grid-wrapper .grid-toolbar {
+    padding: var(--space-s) var(--space-m);
+    border-top: 1px solid var(--border-colour-secondary);
+}
+
+.subpanel-grid-wrapper .grid-toolbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}
+
+.grid-toolbar .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+}
+
+.grid-toolbar .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    flex-wrap: wrap;
+}
+
+.subpanel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.subpanel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-s);
+}
+
+.subpanel .content {
+    flex-grow: 1;
+    margin-bottom: var(--space-m);
+}
+
+.subpanel footer {
+    margin-top: auto;
+}
+
+/* ========================================================================= */
 /* UTILITY */
 
 .hidden {

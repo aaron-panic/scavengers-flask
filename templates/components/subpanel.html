@@ -1,0 +1,20 @@
+{% macro render(data) %}
+<div class="subpanel">
+    <header>
+        <h3>{{ data.title }}</h3>
+        <span class="meta-date">{{ data.date }}</span>
+    </header>
+    
+    <div class="content">
+        <p>{{ data.description }}</p>
+    </div>
+
+    <footer>
+        <div class="tag-cloud">
+            {% for tag in data.tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </footer>
+</div>
+{% endmacro %}

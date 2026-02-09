@@ -360,3 +360,84 @@ button.control.destructive:hover {
 .field-group input {
     height: var(--height-input);
 }
+
+/* ========================================================================= */
+/* SUBPANEL STYLES DEFINITION */
+.subpanel {
+    background-color: var(--bg-colour-primary);
+    border: 1px solid var(--border-colour-secondary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-m);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.subpanel:hover {
+    border-color: var(--border-colour-primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.subpanel header h3 {
+    margin: 0;
+    font-size: var(--font-size-m);
+    color: var(--text-colour-primary);
+}
+
+.subpanel header .meta-date {
+    font-size: var(--font-size-xs);
+    color: var(--text-colour-tertiary);
+    font-family: var(--font-mono);
+}
+
+.subpanel .content p {
+    margin: 0;
+    font-size: var(--font-size-s);
+    color: var(--text-colour-secondary);
+}
+
+/* ========================================================================= */
+/* TAGS STYLE DEFINITIONS */
+.tag {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    color: var(--text-colour-secondary);
+    background-color: var(--bg-colour-secondary);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    margin-right: 4px;
+}
+
+/* ========================================================================= */
+/* FILTER TOOLBAR STYLE DEFINITIONS*/
+.grid-toolbar {
+    background-color: var(--bg-colour-tertiary);
+}
+
+.filter-controls .label {
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    color: var(--text-colour-secondary);
+    text-transform: uppercase;
+}
+
+.filter-tag {
+    text-decoration: none;
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+    color: var(--text-colour-secondary);
+    padding: 2px 6px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.filter-tag:hover {
+    background-color: var(--bg-colour-primary);
+    color: var(--text-colour-primary);
+}
+
+.filter-tag.active {
+    background-color: var(--text-colour-primary);
+    color: var(--bg-colour-primary);
+    border-color: var(--text-colour-primary);
+}
