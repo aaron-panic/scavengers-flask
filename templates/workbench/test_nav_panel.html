@@ -1,13 +1,28 @@
 {% extends "base.html" %}
-{% import "components/nav_panel.html" as NavPanel %}
+{% import "components/panel.html" as Panel %}
 
 {% block content %}
-<h1>Navigation Panel Widget Test</h1>
+<h1>Navigation Panel Test</h1>
 
-{{ NavPanel.render(
-    data=mock.family.navigation, 
-    active_slug=active_slug,
-    classes=['full-width']
-) }}
+{# Construct Tabs Object #}
+{% set tabs = [] %}
+{% for item in mock.family.navigation %}
+    {% set is_active = (item.slug == active_slug) %}
+    {% set _ = tabs.append({
+        'label': item.label,
+        'href': '?slug=' + item.slug,
+        'active': is_active
+    }) %}
+{% endfor %}
+
+{% set active_item = mock.family.navigation | selectattr('slug', 'equalto', active_slug) | first %}
+
+{% call Panel.render(
+    type='tabbed',
+    header={'title': active_item.title},
+    tabs=tabs
+) %}
+    <p>{{ active_item.content }}</p>
+{% endcall %}
 
 {% endblock %}

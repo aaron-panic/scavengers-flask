@@ -1,25 +1,24 @@
 {% extends "base.html" %}
+{% import "components/panel.html" as Panel %}
 {% import "components/modal.html" as Modal %}
 
 {% block content %}
-<h1>Modal Dialog Test</h1>
+    
+    {% call Panel.render(
+        type='article',
+        header={'title': 'Modal Interactions', 'subtitle': 'Native Dialog Element Tests'}
+    ) %}
+        
+        <div style="display: flex; gap: var(--space-m); flex-wrap: wrap;">
+            <button class="btn" onclick="document.getElementById('modal-details').showModal()">View Details</button>
+            <button class="btn inverted" onclick="document.getElementById('modal-suspend').showModal()">Suspend User</button>
+            <button class="btn destructive" onclick="document.getElementById('modal-delete').showModal()">Delete User</button>
+        </div>
 
-<section class="panel">
-    <header>
-        <h1>User Actions</h1>
-        <p class="subtitle">Trigger the modals below to test states.</p>
-    </header>
-    <section class="content" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <button class="control" onclick="document.getElementById('modal-details').showModal()">View Details</button>
-        <button class="control primary" onclick="document.getElementById('modal-reset').showModal()">Reset Password</button>
-        <button class="control primary" onclick="document.getElementById('modal-suspend').showModal()">Suspend User</button>
-        <button class="control destructive" onclick="document.getElementById('modal-delete').showModal()">Delete User</button>
-    </section>
-</section>
+        {{ Modal.render(id='modal-details', data=mock.modal.user_details) }}
+        {{ Modal.render(id='modal-delete', data=mock.modal.delete_user, classes=['destructive']) }}
+        {{ Modal.render(id='modal-suspend', data=mock.modal.suspend_user) }}
 
-{{ Modal.render(id='modal-details', data=mock.modal.user_details) }}
-{{ Modal.render(id='modal-delete', data=mock.modal.delete_user, classes=['destructive']) }}
-{{ Modal.render(id='modal-suspend', data=mock.modal.suspend_user) }}
-{{ Modal.render(id='modal-reset', data=mock.modal.reset_password) }}
+    {% endcall %}
 
 {% endblock %}

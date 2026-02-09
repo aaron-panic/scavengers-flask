@@ -1,189 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <style>
-        /* Internal Development Styles - Not for Production */
-        .library-index ul {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1rem;
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-        }
-
-        .card {
-            border: 1px solid #ccc;
-            padding: 1.5rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-            transition: box-shadow 0.2s;
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-size: 1.25rem;
-        }
-
-        .card h2 a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        .card h2 a:hover {
-            text-decoration: underline;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 0.9rem;
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-
-        .card dl {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 0.5rem 1rem;
-            font-size: 0.8rem;
-            color: #888;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
-            margin: 0;
-        }
-
-        .card dt { font-weight: bold; }
-        .card dd { margin: 0; }
-
-        .data-inspector {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #ddd;
-        }
-        
-        .data-inspector pre {
-            background: #f5f5f5;
-            padding: 1rem;
-            overflow-x: auto;
-            border: 1px solid #ddd;
-        }
-    </style>
+    <style>.library-index ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; list-style: none; padding: 0; } .card { border: 1px solid #ccc; padding: 1.5rem; background: #fff; } .card h2 { margin-top: 0; } .card a { color: #000; text-decoration: none; font-weight: bold; } </style>
 
     <section class="library-index">
         <header>
             <h1>Component Library</h1>
-            <p>Select a widget to view its states and variants.</p>
+            <p>Unified Design System</p>
         </header>
 
         <nav aria-label="Widget Directory">
             <ul>
-                <li>
-                    <article class="card">
-                        <h2><a href="/panel">Panel</a></h2>
-                        <p>Standard container for content blocks. Supports headers, footers, and varying content types.</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Complete</dd>
-                            <dt>Variants</dt>
-                            <dd>4</dd>
-                        </dl>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="card">
-                        <h2><a href="/nav_panel">Navigation Panel</a></h2>
-                        <p>Standard container for tabbed content browsing within a panel widget.</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="card">
-                        <h2><a href="/table">Table Content</a></h2>
-                        <p>Variable table creation.</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="card">
-                        <h2><a href="/admin">Navigation Tables</a></h2>
-                        <p>Multiple tabbed tables</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="card">
-                        <h2><a href="/modal">Modals</a></h2>
-                        <p>Testing Modal Generation</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="card">
-                        <h2><a href="/form">Forms</a></h2>
-                        <p>Testing Form Look/Feel</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
-                    </article>
-                </li>
-
-                <li>
-                    <article class="card">
-                        <h2><a href="/events">Events</a></h2>
-                        <p>Testing Event Grid</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
-                    </article>
-                </li>
+                <li><article class="card"><h2><a href="/panel">Panel Variants</a></h2><p>Empty, Article, Tabbed, Grid</p></article></li>
+                <li><article class="card"><h2><a href="/nav_panel">Navigation Panel</a></h2><p>Tabbed state management</p></article></li>
+                <li><article class="card"><h2><a href="/table">Table Data</a></h2><p>Data display with pagination</p></article></li>
+                <li><article class="card"><h2><a href="/admin">Admin View</a></h2><p>Tabbed tables + Actions</p></article></li>
+                <li><article class="card"><h2><a href="/events">Events Dashboard</a></h2><p>Complex layout (Tabs + Grid + Form)</p></article></li>
+                <li><article class="card"><h2><a href="/form">Forms</a></h2><p>Input arrays</p></article></li>
+                <li><article class="card"><h2><a href="/modal">Modals</a></h2><p>Dialog overlays</p></article></li>
             </ul>
         </nav>
-    </section>
-
-    <section class="data-inspector">
-        <header>
-            <h2>Loaded Mock Data</h2>
-        </header>
-        <details>
-            <summary>View Raw JSON Context</summary>
-            <pre><code>{{ mock|tojson(indent=2) }}</code></pre>
-        </details>
     </section>
 {% endblock %}

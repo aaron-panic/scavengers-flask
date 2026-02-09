@@ -2,26 +2,50 @@
 {% import "components/panel.html" as Panel %}
 
 {% block content %}
-<h1>Panel Widget Test</h1>
+<h1>Panel Variants</h1>
 
-{{ Panel.render(
-    data=mock.article.standard_all, 
-    classes=['full-width', 'theme-primary']
-) }}
+{# We use the call block even for empty content to stick to the pattern #}
+{% call Panel.render(
+    type='empty',
+    header={'title': 'Empty Panel', 'subtitle': 'No bells or whistles'}
+) %}
+    <p>This is a standard panel with minimal configuration.</p>
+{% endcall %}
 
-{{ Panel.render(
-    data=mock.article.standard_subtitle, 
-    classes=['half-width']
-) }}
 
-{{ Panel.render(
-    data=mock.article.standard_footer, 
-    classes=['half-width']
-) }}
+{% call Panel.render(
+    type='article', 
+    header=mock.article.standard_all.header
+) %}
+    <p>{{ mock.article.standard_all.content }}</p>
+{% endcall %}
 
-{{ Panel.render(
-    data=mock.article.standard_minimal, 
-    classes=['minimal', 'alert']
-) }}
+
+{% set tabs = [
+    {'label': 'Tab A', 'href': '#', 'active': True},
+    {'label': 'Tab B', 'href': '#', 'active': False}
+] %}
+{% call Panel.render(
+    type='tabbed',
+    header={'title': 'Tabbed Panel'},
+    tabs=tabs
+) %}
+    <p>Content for the active tab goes here.</p>
+{% endcall %}
+
+
+{% set filters = [
+    {'label': 'All', 'href': '#', 'active': True},
+    {'label': 'Urgent', 'href': '#', 'active': False}
+] %}
+{% call Panel.render(
+    type='grid',
+    header={'title': 'Grid Panel'},
+    filters=filters
+) %}
+    <div style="background:#eee; height:100px; border-radius:4px;"></div>
+    <div style="background:#eee; height:100px; border-radius:4px;"></div>
+    <div style="background:#eee; height:100px; border-radius:4px;"></div>
+{% endcall %}
 
 {% endblock %}
