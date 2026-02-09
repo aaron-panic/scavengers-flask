@@ -1,5 +1,21 @@
+/*   widget.css - Styling for widget components
+#    Copyright (C) 2026  Aaron Reichenbach
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+
 /* ========================================================================= */
-/* 1. MASTER PANEL */
+/* MASTER PANEL */
 .panel {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-primary);
@@ -57,7 +73,7 @@
 }
 
 /* ========================================================================= */
-/* 2. CARD & TAGS */
+/* CARD & TAGS */
 .card {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-secondary);
@@ -89,7 +105,7 @@
 }
 
 /* ========================================================================= */
-/* 3. FORMS */
+/* FORMS */
 .field-group label {
     font-size: var(--font-size-s);
     font-weight: bold;
@@ -122,7 +138,7 @@
 }
 
 /* ========================================================================= */
-/* 4. TABLES */
+/* TABLES */
 table th {
     background-color: var(--bg-colour-secondary);
     border-bottom: 2px solid var(--border-colour-primary);
@@ -138,7 +154,7 @@ table tbody tr:hover {
 }
 
 /* ========================================================================= */
-/* 5. MODALS */
+/* MODALS */
 dialog.modal {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-primary);
@@ -157,7 +173,7 @@ dialog.modal::backdrop {
 .details-grid dt::after { content: ":"; }
 
 /* ========================================================================= */
-/* 6. BUTTONS */
+/* BUTTONS */
 .btn {
     background-color: transparent;
     border: 1px solid var(--border-colour-primary);

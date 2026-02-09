@@ -1,3 +1,19 @@
+#    app.py - for mock server workbench routes
+#    Copyright (C) 2026  Aaron Reichenbach
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import os
 import json
 import math
@@ -6,7 +22,6 @@ from jinja2 import TemplateNotFound
 
 app = Flask(__name__)
 
-# ... [load_mock_data and inject_global_data remain the same] ...
 def load_mock_data():
     data = {}
     mock_dir = os.path.join(app.root_path, 'mock_data')
@@ -25,7 +40,6 @@ def load_mock_data():
 def inject_global_data():
     return dict(mock=load_mock_data())
 
-# ... [index, test_panel, test_form, test_modal, test_table routes remain the same] ...
 @app.route('/')
 def index():
     return render_template('workbench/index.html')
@@ -80,8 +94,6 @@ def test_table():
                            rows=users_slice, 
                            columns=columns, 
                            pagination=pagination)
-
-# --- REFACTORED ROUTES BELOW ---
 
 @app.route('/nav_panel')
 def test_nav_panel():

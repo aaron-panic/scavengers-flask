@@ -1,5 +1,21 @@
+/*   layout.css - Styling related to geometry and sizing of widget components
+#    Copyright (C) 2026  Aaron Reichenbach
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>. */
+
 /* ========================================================================= */
-/* 1. RESET & BOX MODEL */
+/* RESET & BOX MODEL */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -11,7 +27,7 @@ html, body {
 }
 
 /* ========================================================================= */
-/* 2. BASE LAYOUT */
+/* BASE LAYOUT */
 .base-header {
     display: block;
     width: var(--width-full);
@@ -28,7 +44,7 @@ main {
 }
 
 /* ========================================================================= */
-/* 3. PANEL LAYOUT */
+/* PANEL LAYOUT */
 .panel {
     display: flex;
     flex-direction: column;
@@ -103,7 +119,7 @@ main {
 }
 
 /* ========================================================================= */
-/* 4. CARD LAYOUT */
+/* CARD LAYOUT */
 .card {
     display: flex;
     flex-direction: column;
@@ -137,7 +153,7 @@ main {
 }
 
 /* ========================================================================= */
-/* 5. FORM LAYOUT */
+/* FORM LAYOUT */
 .form-grid {
     display: flex;
     flex-wrap: wrap;
@@ -147,7 +163,7 @@ main {
 .field-group {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Default to full width */
+    width: 100%;
 }
 
 /* Width Utility Classes for Fields */
@@ -173,7 +189,7 @@ main {
 }
 
 /* ========================================================================= */
-/* 6. TABLE LAYOUT */
+/* TABLE LAYOUT */
 .table-container {
     width: 100%;
     overflow-x: auto;
@@ -202,7 +218,7 @@ th, td {
 }
 
 /* ========================================================================= */
-/* 7. MODAL LAYOUT */
+/* MODAL LAYOUT */
 dialog.modal {
     margin: auto;
     padding: 0;
@@ -230,7 +246,6 @@ dialog.modal menu {
     margin: 0;
 }
 
-/* Definition List Grid */
 .details-grid {
     display: grid;
     grid-template-columns: 100px auto;
@@ -241,7 +256,7 @@ dialog.modal menu {
 .details-grid dd { margin: 0; }
 
 /* ========================================================================= */
-/* 8. BUTTONS & UTILS */
+/* BUTTONS & UTILS */
 .btn {
     display: inline-flex;
     align-items: center;
