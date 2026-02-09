@@ -50,4 +50,22 @@
 
     /* OVERLAYS */
     --color-overlay: rgba(0, 0, 0, 0.5);
+
+    /* FORM PALETTE */
+    --form-bg-colour: #ffffff;
+    --form-label-colour: #1a1a1a;
+    --form-text-colour: #000000;
+    --form-placeholder-colour: #999999;
+    --form-border-colour: #cccccc;
+    --form-focus-colour: #000000;
+
+    /* FORM GEOMETRY */
+    --height-input: 2.5rem;
+    --height-textarea-s: 4rem;
+    --height-textarea-m: 8rem;
+    --height-textarea-l: 12rem;
+    
+    --width-full: 100%;
+    --width-half: 50%;
+    --width-third: 33.333%;
 }

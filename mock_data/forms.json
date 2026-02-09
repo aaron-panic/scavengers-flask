@@ -1,0 +1,55 @@
+{
+  "request_form": {
+    "title": "Submit New Request",
+    "description": "Please provide details for your resource request.",
+    "action": "/submit-request",
+    "method": "POST",
+    "fields": [
+      {
+        "name": "title",
+        "label": "Request Title",
+        "type": "text",
+        "placeholder": "e.g., New Server Provisioning",
+        "width": "full-width"
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "textarea",
+        "placeholder": "Describe the requirements in detail...",
+        "width": "full-width",
+        "height": "height-l"
+      },
+      {
+        "name": "ref_1",
+        "label": "Reference 1",
+        "type": "text",
+        "width": "full-width"
+      },
+      {
+        "name": "ref_2",
+        "label": "Reference 2",
+        "type": "text",
+        "width": "half-width"
+      },
+      {
+        "name": "ref_3",
+        "label": "Reference 3",
+        "type": "text",
+        "width": "half-width"
+      }
+    ],
+    "buttons": [
+      {
+        "label": "Clear Form",
+        "type": "reset",
+        "class": "secondary"
+      },
+      {
+        "label": "Submit Request",
+        "type": "submit",
+        "class": "primary"
+      }
+    ]
+  }
+}

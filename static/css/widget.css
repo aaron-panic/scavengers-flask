@@ -320,3 +320,43 @@ button.control.destructive:hover {
     color: var(--text-colour-primary);
     font-size: var(--font-size-base);
 }
+
+/* ========================================================================= */
+/* FORM STYLE DEFINITIONS */
+
+.field-group label {
+    font-size: var(--font-size-s);
+    font-weight: bold;
+    color: var(--form-label-colour);
+}
+
+.field-group input,
+.field-group textarea {
+    background-color: var(--form-bg-colour);
+    border: 1px solid var(--form-border-colour);
+    border-radius: var(--radius-sm);
+    color: var(--form-text-colour);
+    padding: var(--space-s);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    transition: border-color 0.2s ease;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+    outline: none;
+    border-color: var(--form-focus-colour);
+}
+
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+    color: var(--form-placeholder-colour);
+}
+
+.height-s { height: var(--height-textarea-s); }
+.height-m { height: var(--height-textarea-m); }
+.height-l { height: var(--height-textarea-l); }
+
+.field-group input {
+    height: var(--height-input);
+}

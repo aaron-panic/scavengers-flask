@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% import "components/form.html" as Form %}
+
+{% block content %}
+<h1>Form Widget Test</h1>
+
+{{ Form.render(data=mock.forms.request_form) }}
+
+{% endblock %}

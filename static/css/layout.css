@@ -212,6 +212,7 @@ th, td {
 
 /* ========================================================================= */
 /* MODAL LAYOUT */
+
 dialog.modal {
     margin: auto;
     padding: var(--space-0);
@@ -265,6 +266,53 @@ dialog.modal menu {
     margin: var(--space-0);
     text-align: left;
     word-break: break-word;
+}
+
+/* ========================================================================= */
+/* FORM LAYOUT */
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    padding: var(--space-m);
+    width: var(--width-full);
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    width: var(--width-full); 
+}
+
+.field-group.full-width {
+    width: 100%;
+}
+
+.field-group.half-width {
+    width: calc(50% - (var(--space-m) / 2));
+}
+
+.field-group.one-third-width {
+    width: calc(33.333% - (var(--space-m) * 2 / 3));
+}
+
+.field-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    width: 100%;
+}
+
+.field-group input,
+.field-group textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-panel footer .action-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-s);
 }
 
 /* ========================================================================= */
