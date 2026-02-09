@@ -198,6 +198,13 @@ def test_nav_panel(slug=None):
         
     return render_template('workbench/test_nav_panel.html', active_slug=slug)
 
+@app.route('/modal')
+def test_modal():
+    """
+    Route to test the Modal widget variants.
+    """
+    return render_template('workbench/test_modal.html')
+
 if __name__ == '__main__':
     # Docker handles the port mapping, so we listen on 5000 internally
     app.run(host='0.0.0.0', port=5000, debug=True)
