@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Server Maintenance",
+    "description": "Routine patching of linux kernels on the primary cluster.",
+    "tags": ["maintenance", "urgent", "ops"],
+    "date": "2026-02-10"
+  },
+  {
+    "id": 2,
+    "title": "Team Lunch",
+    "description": "Pizza party at the downtown office. Vegan options available.",
+    "tags": ["social", "food"],
+    "date": "2026-02-12"
+  },
+  {
+    "id": 3,
+    "title": "Q1 Planning",
+    "description": "All-hands meeting to discuss the roadmap for the next quarter.",
+    "tags": ["business", "planning"],
+    "date": "2026-02-15"
+  },
+  {
+    "id": 4,
+    "title": "Code Review Session",
+    "description": "Deep dive into the new authentication module.",
+    "tags": ["dev", "code"],
+    "date": "2026-02-16"
+  },
+  {
+    "id": 5,
+    "title": "Fire Drill",
+    "description": "Mandatory evacuation practice. Meet at the muster point.",
+    "tags": ["safety", "mandatory"],
+    "date": "2026-02-20"
+  },
+  {
+    "id": 6,
+    "title": "Client Demo",
+    "description": "Showcasing the new widget library to the stakeholders.",
+    "tags": ["business", "demo"],
+    "date": "2026-02-22"
+  }
+]

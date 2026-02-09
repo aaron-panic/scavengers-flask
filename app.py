@@ -212,6 +212,61 @@ def test_form():
     """
     return render_template('workbench/test_form.html')
 
+@app.route('/events')
+def test_events():
+    """
+    Demonstrates a NavPanel containing a Subpanel Grid and an Embedded Form.
+    """
+    data = load_mock_data()
+    all_events = data.get('events', [])
+    
+    active_tab = request.args.get('tab', 'browse')
+    nav_structure = [
+        {'slug': 'browse', 'label': 'Browse Events', 'title': 'Event Dashboard'},
+        {'slug': 'new', 'label': 'Add Event', 'title': 'Schedule New Event'}
+    ]
+
+    grid_items = []
+    pagination = {}
+    all_tags = sorted(list(set(tag for event in all_events for tag in event['tags'])))
+    active_tag = request.args.get('tag')
+
+    if active_tab == 'browse':
+        # Filtering
+        if active_tag:
+            filtered_events = [e for e in all_events if active_tag in e['tags']]
+        else:
+            filtered_events = all_events
+        
+        # Pagination
+        page = request.args.get('page', 1, type=int)
+        per_page = 4
+        total_pages = math.ceil(len(filtered_events) / per_page)
+        
+        start = (page - 1) * per_page
+        end = start + per_page
+        grid_items = filtered_events[start:end]
+        
+        pagination = {
+            'page': page,
+            'pages': total_pages,
+            'has_prev': page > 1,
+            'has_next': page < total_pages,
+            'prev_num': page - 1,
+            'next_num': page + 1
+        }
+
+    form_data = data.get('forms', {}).get('request_form', {})
+    
+    return render_template('workbench/test_events.html',
+                           nav_data=nav_structure,
+                           active_tab=active_tab,
+                           grid_items=grid_items,
+                           pagination=pagination,
+                           all_tags=all_tags,
+                           active_tag=active_tag,
+                           form_data=form_data)
+
 if __name__ == '__main__':
     # Docker handles the port mapping, so we listen on 5000 internally
     app.run(host='0.0.0.0', port=5000, debug=True)

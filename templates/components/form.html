@@ -1,4 +1,5 @@
-{% macro render(data, classes=[]) %}
+{% macro render(data, classes=[], embedded=False) %}
+{% if not embedded %}
 <article class="panel form-panel {{ classes|join(' ') }}">
     <header>
         <h1>{{ data.title }}</h1>
@@ -6,6 +7,9 @@
             <p class="subtitle">{{ data.description }}</p>
         {% endif %}
     </header>
+{% else %}
+<div class="form-embedded {{ classes|join(' ') }}">
+{% endif %}
 
     <form action="{{ data.action }}" method="{{ data.method }}">
         <section class="form-grid">
@@ -40,5 +44,10 @@
             </div>
         </footer>
     </form>
+
+{% if not embedded %}
 </article>
+{% else %}
+</div>
+{% endif %}
 {% endmacro %}
