@@ -1,8 +1,8 @@
 [
-  {"id": 1, "name": "Aaron Reichenbach", "email": "aaron@scavengers.net", "role": "Admin", "status": "Active"},
-  {"id": 2, "name": "Karen Abramson", "email": "karen@scavengers.net", "role": "Editor", "status": "Active"},
-  {"id": 3, "name": "Higgs Boson", "email": "higgs@scavengers.net", "role": "User", "status": "Active"},
-  {"id": 4, "name": "Sudo Command", "email": "sudo@scavengers.net", "role": "User", "status": "Active"},
+  {"id": 1, "name": "Aaron Reichenbach", "email": "aaron@scavengers.io", "role": "Admin", "status": "Active"},
+  {"id": 2, "name": "Karen Abramson", "email": "karen@scavengers.io", "role": "Editor", "status": "Active"},
+  {"id": 3, "name": "Higgs Boson", "email": "higgs@scavengers.io", "role": "User", "status": "Active"},
+  {"id": 4, "name": "Sudo Command", "email": "sudo@scavengers.io", "role": "User", "status": "Active"},
   {"id": 5, "name": "System Bot", "email": "bot@scavengers.net", "role": "Bot", "status": "Inactive"},
   {"id": 6, "name": "John Doe", "email": "john.doe@example.com", "role": "User", "status": "Pending"},
   {"id": 7, "name": "Jane Smith", "email": "jane.smith@example.com", "role": "User", "status": "Active"},
