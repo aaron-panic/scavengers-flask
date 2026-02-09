@@ -4,7 +4,6 @@
 {% block content %}
 <h1>Panel Variants</h1>
 
-{# We use the call block even for empty content to stick to the pattern #}
 {% call Panel.render(
     type='empty',
     header={'title': 'Empty Panel', 'subtitle': 'No bells or whistles'}
@@ -43,9 +42,9 @@
     header={'title': 'Grid Panel'},
     filters=filters
 ) %}
-    <div style="background:#eee; height:100px; border-radius:4px;"></div>
-    <div style="background:#eee; height:100px; border-radius:4px;"></div>
-    <div style="background:#eee; height:100px; border-radius:4px;"></div>
+    <div class="mock-card"></div>
+    <div class="mock-card"></div>
+    <div class="mock-card"></div>
 {% endcall %}
 
 {% endblock %}

@@ -11,17 +11,12 @@ html, body {
 }
 
 /* ========================================================================= */
-/* 2. BASE LAYOUT (App Shell) */
+/* 2. BASE LAYOUT */
 .base-header {
     display: block;
     width: var(--width-full);
     margin: var(--space-0);
     padding: var(--space-m);
-}
-
-.base-header nav {
-    display: block;
-    width: var(--width-full);
 }
 
 main {
@@ -33,104 +28,74 @@ main {
 }
 
 /* ========================================================================= */
-/* 3. MASTER PANEL LAYOUT */
+/* 3. PANEL LAYOUT */
 .panel {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    margin-bottom: var(--space-l);
-    padding: var(--space-0);
-    /* Flex column ensures footer sticks to bottom if height is fixed */
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    width: var(--width-full);
+    margin-bottom: var(--space-l);
 }
 
-/* Header Region */
 .panel header {
-    display: block;
-    width: var(--width-full);
     padding: var(--space-m);
 }
 
 .panel header h1 {
-    margin: var(--space-0);
-    margin-bottom: var(--space-xs);
+    margin: 0 0 var(--space-xs) 0;
 }
 
 .panel header .subtitle {
-    margin: var(--space-0);
-    margin-bottom: var(--space-s);
+    margin: 0 0 var(--space-s) 0;
 }
 
-/* Header Meta Data (Author/Date) */
+/* Meta Data */
 .panel header .meta {
     display: flex;
-    flex-direction: row;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-0);
+    margin: 0;
+    padding: 0;
 }
+.panel header .meta dt { margin-right: var(--space-xs); }
+.panel header .meta dd { margin: 0; margin-right: var(--space-m); }
 
-.panel header .meta dt {
-    margin-right: var(--space-xs);
-}
-
-.panel header .meta dd:first-of-type {
-    margin-right: auto; /* Spring to push date to right */
-}
-
-/* Navigation Tabs (For Tabbed Panels) */
-.panel header nav {
-    margin-top: var(--space-m);
-}
-
+/* Nav Tabs */
 .panel header nav ul {
     display: flex;
-    flex-direction: row;
     list-style: none;
-    margin: var(--space-0);
-    padding: var(--space-0);
+    margin: var(--space-m) 0 0 0;
+    padding: 0;
     gap: var(--space-m);
 }
 
-/* Toolbar (For Grid Panels - Filter/Search) */
+/* Toolbar */
 .panel .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: var(--space-s) var(--space-m);
-    border-top: 1px solid transparent; /* Placeholder for widget styling */
-    border-bottom: 1px solid transparent;
 }
-
 .panel .toolbar .filters {
     display: flex;
     gap: var(--space-s);
 }
 
-/* Content Region */
+/* Content */
 .panel .content {
-    display: block;
-    width: var(--width-full);
     padding: var(--space-m);
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
-/* GRID TYPE CONTENT */
 .panel .content.grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: var(--space-m);
 }
 
-/* Footer Region */
+/* Footer */
 .panel footer {
-    display: block;
-    width: var(--width-full);
     padding: var(--space-s) var(--space-m);
+    margin-top: auto;
 }
 
-/* Pagination in Footer */
 .panel footer nav.pagination {
     display: flex;
     justify-content: space-between;
@@ -138,7 +103,7 @@ main {
 }
 
 /* ========================================================================= */
-/* 4. COMPONENT: CARD (The Grid Item) */
+/* 4. CARD LAYOUT */
 .card {
     display: flex;
     flex-direction: column;
@@ -147,26 +112,136 @@ main {
 }
 
 .card header {
-    padding: var(--space-0); /* Override panel header padding */
-    margin-bottom: var(--space-s);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    padding: 0;
+    margin-bottom: var(--space-s);
 }
 
 .card .content {
-    padding: var(--space-0); /* Override panel content padding */
-    margin-bottom: var(--space-m);
     flex-grow: 1;
+    padding: 0;
+    margin-bottom: var(--space-m);
 }
 
 .card footer {
-    padding: var(--space-0); /* Override panel footer padding */
+    padding: 0;
     margin-top: auto;
 }
 
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
 /* ========================================================================= */
-/* 5. COMPONENT: BUTTONS */
+/* 5. FORM LAYOUT */
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Default to full width */
+}
+
+/* Width Utility Classes for Fields */
+.field-group.full-width { width: 100%; }
+.field-group.half-width { width: calc(50% - (var(--space-m) / 2)); }
+.field-group.one-third-width { width: calc(33.333% - (var(--space-m) * 0.66)); }
+
+.field-group label {
+    margin-bottom: var(--space-xs);
+}
+
+.field-group input,
+.field-group textarea {
+    width: 100%;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-s);
+    margin-top: var(--space-m);
+    padding-top: var(--space-m);
+}
+
+/* ========================================================================= */
+/* 6. TABLE LAYOUT */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: var(--space-s) var(--space-m);
+    text-align: left;
+}
+
+.col-actions {
+    width: 1%;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.action-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-xs);
+}
+
+/* ========================================================================= */
+/* 7. MODAL LAYOUT */
+dialog.modal {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    max-width: 500px;
+    z-index: var(--z-modal);
+}
+
+dialog.modal header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-m);
+}
+
+dialog.modal .content {
+    padding: var(--space-m);
+}
+
+dialog.modal menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-s);
+    padding: var(--space-m);
+    margin: 0;
+}
+
+/* Definition List Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: var(--space-s) var(--space-m);
+    margin: 0;
+}
+.details-grid dt { text-align: right; }
+.details-grid dd { margin: 0; }
+
+/* ========================================================================= */
+/* 8. BUTTONS & UTILS */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -176,23 +251,13 @@ main {
     text-decoration: none;
 }
 
-/* Icon-only button variant (small square) */
 .btn.icon-only {
     width: 32px;
     height: 32px;
     padding: 0;
 }
 
-/* ========================================================================= */
-/* 6. UTILITY */
-.hidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap; 
-}
+/* Utilities */
+.hidden { display: none; }
+.flex-wrap { display: flex; flex-wrap: wrap; }
+.gap-m { gap: var(--space-m); }

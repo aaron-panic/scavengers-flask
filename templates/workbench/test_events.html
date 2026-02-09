@@ -5,13 +5,7 @@
 
 {% block content %}
 
-{# 1. Construct Tabs #}
-{% set nav_tabs = [
-    {'label': 'Browse Events', 'href': '?tab=browse', 'active': (active_tab == 'browse')},
-    {'label': 'Add Event', 'href': '?tab=new', 'active': (active_tab == 'new')}
-] %}
-
-{# 2. Construct Filters (Only if Browse) #}
+{# Construct Filters (Only if Browse) #}
 {% set filters = [] %}
 {% if active_tab == 'browse' %}
     {% set _ = filters.append({'label': 'All', 'href': '?tab=browse', 'active': (not active_tag)}) %}
@@ -24,12 +18,11 @@
     {% endfor %}
 {% endif %}
 
-{# 3. Render Panel #}
-{# Note: We inject 'grid-layout' class into content only if we are browsing #}
+{# Render Panel #}
 {% call Panel.render(
     type='tabbed',
     header={'title': 'Event Dashboard'},
-    tabs=nav_tabs,
+    tabs=tabs,
     filters=filters if active_tab == 'browse' else None,
     pagination=pagination if active_tab == 'browse' else None,
     content_classes=['grid-layout'] if active_tab == 'browse' else []
@@ -38,7 +31,6 @@
     {% if active_tab == 'browse' %}
         {# Render Grid of Cards #}
         {% for item in grid_items %}
-            {# Map event data to Card data structure #}
             {% set card_data = {
                 'title': item.title,
                 'description': item.description,

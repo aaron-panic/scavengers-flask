@@ -1,5 +1,5 @@
 /* ========================================================================= */
-/* 1. MASTER PANEL STYLES */
+/* 1. MASTER PANEL */
 .panel {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-primary);
@@ -7,10 +7,9 @@
     font-family: var(--font-sans);
 }
 
-/* Headers */
 .panel header {
     background-color: var(--bg-colour-secondary);
-    border-bottom: 1px solid var(--border-colour-secondary);
+    border-bottom: 1px solid var(--border-colour-primary);
 }
 
 .panel header h1 {
@@ -24,26 +23,17 @@
     color: var(--text-colour-secondary);
 }
 
-/* Meta Data */
-.panel header .meta dt {
-    color: var(--text-colour-tertiary);
-    font-size: var(--font-size-s);
-}
-.panel header .meta dt::after { content: ":"; }
+.panel header .meta { color: var(--text-colour-tertiary); font-size: var(--font-size-s); }
+.panel header .meta dt { font-weight: bold; }
 
-.panel header .meta dd, 
-.panel header .meta time {
-    color: var(--text-colour-secondary);
-    font-size: var(--font-size-s);
-}
-
-/* Navigation Tabs */
+/* Tabs */
 .panel header nav a {
     color: var(--text-colour-secondary);
     text-decoration: none;
     font-size: var(--font-size-s);
     border-bottom: 2px solid transparent;
     padding-bottom: var(--space-xs);
+    transition: color 0.2s, border-color 0.2s;
 }
 .panel header nav a:hover { color: var(--text-colour-primary); }
 .panel header nav a.current {
@@ -52,32 +42,31 @@
     font-weight: bold;
 }
 
-/* Toolbar (Grid Panel) */
+/* Toolbar */
 .panel .toolbar {
     background-color: var(--bg-colour-tertiary);
-    border-color: var(--border-colour-secondary);
+    border-bottom: 1px solid var(--border-colour-primary);
 }
 
 /* Footer */
 .panel footer {
-    background-color: var(--bg-colour-tertiary);
-    border-top: 1px solid var(--border-colour-secondary);
+    background-color: var(--bg-colour-secondary);
+    border-top: 1px solid var(--border-colour-primary);
     color: var(--text-colour-secondary);
     font-size: var(--font-size-s);
 }
 
 /* ========================================================================= */
-/* 2. CARD STYLES */
+/* 2. CARD & TAGS */
 .card {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-secondary);
-    border-radius: var(--radius-sm);
+    border-radius: 4px;
     transition: box-shadow 0.2s, border-color 0.2s;
 }
-
 .card:hover {
     border-color: var(--border-colour-primary);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .card header h3 {
@@ -85,64 +74,119 @@
     font-size: var(--font-size-m);
     color: var(--text-colour-primary);
 }
+.card header .meta-date {
+    font-size: var(--font-size-xs);
+    color: var(--text-colour-tertiary);
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 8px;
+    border-radius: 999px; /* Pill shape */
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
+}
 
 /* ========================================================================= */
-/* 3. BUTTONS (Unified) */
-.btn {
-    background-color: transparent; /* Default: Regular (Ghost/Outline style) */
-    border: 1px solid var(--border-colour-secondary);
-    border-radius: var(--radius-sm);
-    color: var(--text-colour-primary);
-    font-family: var(--font-sans);
+/* 3. FORMS */
+.field-group label {
     font-size: var(--font-size-s);
-    line-height: 1.2;
+    font-weight: bold;
+    color: var(--text-colour-primary);
 }
 
+.field-group input,
+.field-group textarea {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    padding: var(--space-s);
+    font-size: var(--font-size-base);
+    font-family: var(--font-sans);
+    height: var(--input-height);
+}
+.field-group textarea {
+    height: auto;
+    min-height: 5rem;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+    outline: none;
+    border-color: var(--input-focus);
+}
+
+.form-actions {
+    border-top: 1px solid var(--border-colour-secondary);
+}
+
+/* ========================================================================= */
+/* 4. TABLES */
+table th {
+    background-color: var(--bg-colour-secondary);
+    border-bottom: 2px solid var(--border-colour-primary);
+    font-weight: bold;
+    font-size: var(--font-size-s);
+}
+table td {
+    border-bottom: 1px solid var(--border-colour-secondary);
+    font-size: var(--font-size-s);
+}
+table tbody tr:hover {
+    background-color: var(--bg-colour-secondary);
+}
+
+/* ========================================================================= */
+/* 5. MODALS */
+dialog.modal {
+    background-color: var(--bg-colour-primary);
+    border: 1px solid var(--border-colour-primary);
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+dialog.modal::backdrop {
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(2px);
+}
+
+.details-grid dt {
+    font-weight: bold;
+    color: var(--text-colour-tertiary);
+}
+.details-grid dt::after { content: ":"; }
+
+/* ========================================================================= */
+/* 6. BUTTONS */
+.btn {
+    background-color: transparent;
+    border: 1px solid var(--border-colour-primary);
+    border-radius: 4px;
+    color: var(--text-colour-primary);
+    font-size: var(--font-size-s);
+    transition: background-color 0.1s;
+}
 .btn:hover {
     background-color: var(--bg-colour-secondary);
-    border-color: var(--border-colour-primary);
 }
 
-.btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+.btn.inverted {
+    background-color: var(--text-colour-primary);
+    color: var(--bg-colour-primary);
+    border-color: var(--text-colour-primary);
 }
+.btn.inverted:hover { opacity: 0.9; }
 
-/* Variant: Destructive (Warning/Error) */
 .btn.destructive {
     color: var(--text-colour-error);
     border-color: var(--text-colour-error);
 }
-
 .btn.destructive:hover {
     background-color: var(--text-colour-error);
-    color: var(--bg-colour-primary); /* Text becomes white */
+    color: white;
 }
-
-/* Variant: Inverted (Primary/Solid) */
-.btn.inverted {
-    background-color: var(--text-colour-primary); /* Black BG */
-    color: var(--bg-colour-primary); /* White Text */
-    border-color: var(--text-colour-primary);
-}
-
-.btn.inverted:hover {
-    opacity: 0.9;
-}
-
-/* ========================================================================= */
-/* 4. MODAL & TABLE TWEAKS */
-/* Ensure modals and tables inherit these new generic styles automatically */
-
-/* Modal Overrides */
-dialog.modal {
-    background-color: var(--bg-colour-primary);
-    border: 1px solid var(--border-colour-primary);
-    border-radius: var(--radius-md);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-dialog.modal::backdrop {
-    background-color: var(--color-overlay);
-    backdrop-filter: blur(2px);
+.btn.btn-close {
+    border: none;
+    font-size: var(--font-size-l);
+    line-height: 1;
 }

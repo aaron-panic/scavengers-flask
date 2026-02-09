@@ -9,10 +9,10 @@
         header={'title': 'Modal Interactions', 'subtitle': 'Native Dialog Element Tests'}
     ) %}
         
-        <div style="display: flex; gap: var(--space-m); flex-wrap: wrap;">
-            <button class="btn" onclick="document.getElementById('modal-details').showModal()">View Details</button>
-            <button class="btn inverted" onclick="document.getElementById('modal-suspend').showModal()">Suspend User</button>
-            <button class="btn destructive" onclick="document.getElementById('modal-delete').showModal()">Delete User</button>
+        <div class="flex-wrap gap-m">
+            <button class="btn" data-modal-target="modal-details">View Details</button>
+            <button class="btn inverted" data-modal-target="modal-suspend">Suspend User</button>
+            <button class="btn destructive" data-modal-target="modal-delete">Delete User</button>
         </div>
 
         {{ Modal.render(id='modal-details', data=mock.modal.user_details) }}

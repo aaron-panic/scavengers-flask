@@ -1,7 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <style>.library-index ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; list-style: none; padding: 0; } .card { border: 1px solid #ccc; padding: 1.5rem; background: #fff; } .card h2 { margin-top: 0; } .card a { color: #000; text-decoration: none; font-weight: bold; } </style>
+    <style>
+        /* Workbench-Specific Grid Layout */
+        .library-index {
+            margin-top: var(--space-l);
+        }
+
+        .library-index header {
+            margin-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--border-colour-secondary);
+            padding-bottom: var(--space-m);
+        }
+
+        .library-index header h1 {
+            margin-bottom: var(--space-xs);
+        }
+
+        .library-index header p {
+            color: var(--text-colour-secondary);
+            margin: 0;
+            font-size: var(--font-size-l);
+        }
+
+        .library-index ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-m);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* We use the standard .card class for the base look, 
+           but add specific overrides for the index interactivity 
+        */
+        .library-index .card {
+            height: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .library-index .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--border-colour-primary);
+        }
+
+        .library-index .card h2 {
+            margin-top: 0;
+            margin-bottom: var(--space-s);
+            font-size: var(--font-size-m);
+        }
+
+        .library-index .card a {
+            color: var(--text-colour-primary);
+            text-decoration: none;
+        }
+
+        .library-index .card a::after {
+            /* Make the whole card clickable */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .library-index .card p {
+            color: var(--text-colour-secondary);
+            font-size: var(--font-size-s);
+            margin: 0;
+            line-height: var(--line-height-standard);
+        }
+    </style>
 
     <section class="library-index">
         <header>
@@ -11,13 +84,48 @@
 
         <nav aria-label="Widget Directory">
             <ul>
-                <li><article class="card"><h2><a href="/panel">Panel Variants</a></h2><p>Empty, Article, Tabbed, Grid</p></article></li>
-                <li><article class="card"><h2><a href="/nav_panel">Navigation Panel</a></h2><p>Tabbed state management</p></article></li>
-                <li><article class="card"><h2><a href="/table">Table Data</a></h2><p>Data display with pagination</p></article></li>
-                <li><article class="card"><h2><a href="/admin">Admin View</a></h2><p>Tabbed tables + Actions</p></article></li>
-                <li><article class="card"><h2><a href="/events">Events Dashboard</a></h2><p>Complex layout (Tabs + Grid + Form)</p></article></li>
-                <li><article class="card"><h2><a href="/form">Forms</a></h2><p>Input arrays</p></article></li>
-                <li><article class="card"><h2><a href="/modal">Modals</a></h2><p>Dialog overlays</p></article></li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/panel">Panel Variants</a></h2>
+                        <p>Standard containers including Empty, Article, Tabbed, and Grid layouts.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/nav_panel">Navigation Panel</a></h2>
+                        <p>Tabbed state management and sub-navigation handling.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/table">Table Data</a></h2>
+                        <p>Data-dense displays with automated pagination and row actions.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/admin">Admin View</a></h2>
+                        <p>Composite view combining Tabbed Panels, Tables, and Action buttons.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/events">Events Dashboard</a></h2>
+                        <p>Complex dashboard featuring Tabs, Grid layouts, Cards, and Forms.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/form">Forms</a></h2>
+                        <p>Configuration-driven input arrays with standard validation styles.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/modal">Modals</a></h2>
+                        <p>Native &lt;dialog&gt; overlays for critical interruptions and details.</p>
+                    </article>
+                </li>
             </ul>
         </nav>
     </section>

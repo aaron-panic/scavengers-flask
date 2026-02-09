@@ -24,8 +24,8 @@
         {% endfor %}
     </section>
 
-    <footer style="margin-top: var(--space-m); padding-top: var(--space-m); border-top: 1px solid var(--border-colour-secondary);">
-        <div class="action-group" style="display: flex; justify-content: flex-end; gap: var(--space-s);">
+    <footer class="form-actions">
+        <div class="action-group">
             {% for btn in data.buttons %}
             <button type="{{ btn.type }}" class="btn {{ btn.class }}">{{ btn.label }}</button>
             {% endfor %}

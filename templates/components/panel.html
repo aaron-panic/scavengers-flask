@@ -1,17 +1,14 @@
 {% macro render(type='article', header=None, tabs=None, filters=None, pagination=None, classes=[], content_classes=[]) %}
 <article class="panel {{ classes|join(' ') }}">
     
-    {# 1. HEADER REGION #}
     {% if header or tabs %}
     <header>
         {% if header %}
             <h1>{{ header.title }}</h1>
-            
             {% if header.subtitle %}
                 <p class="subtitle">{{ header.subtitle }}</p>
             {% endif %}
 
-            {# Meta Data - Only for Article type #}
             {% if type == 'article' and (header.author or header.date) %}
             <dl class="meta">
                 {% if header.author %}
@@ -24,7 +21,6 @@
             {% endif %}
         {% endif %}
 
-        {# Navigation Tabs - Render if data exists #}
         {% if tabs %}
         <nav aria-label="Panel Navigation">
             <ul>
@@ -43,13 +39,12 @@
     </header>
     {% endif %}
 
-    {# 2. TOOLBAR REGION (Grid Filters) #}
     {% if type == 'grid' and filters %}
     <div class="toolbar">
         <div class="filters">
             <span class="label">Filter:</span>
             {% for filter in filters %}
-            <a href="{{ filter.href }}" class="btn {{ 'inverted' if filter.active else '' }}" style="font-size: var(--font-size-xs); padding: 2px 6px;">
+            <a href="{{ filter.href }}" class="btn {{ 'inverted' if filter.active else '' }}">
                 {{ filter.label }}
             </a>
             {% endfor %}
@@ -57,15 +52,12 @@
     </div>
     {% endif %}
 
-    {# 3. CONTENT REGION #}
-    {# Auto-apply grid layout if type is grid. Only render if caller is provided. #}
     {% if caller %}
     <section class="content {{ 'grid-layout' if type == 'grid' else '' }} {{ content_classes|join(' ') }}">
         {{ caller() }}
     </section>
     {% endif %}
 
-    {# 4. FOOTER REGION #}
     {% if pagination or (header and header.footer) %}
     <footer>
         {% if pagination %}
@@ -79,6 +71,5 @@
         {% endif %}
     </footer>
     {% endif %}
-
 </article>
 {% endmacro %}

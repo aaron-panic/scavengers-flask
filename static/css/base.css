@@ -4,7 +4,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", "Noto Sans Mono", "Liberation Mono", "DejaVu Sans Mono", monospace;
 
     --font-size-base: 1rem;
-    --font-size-xs: 0.625rem;
+    --font-size-xs: 0.75rem; /* Bumped up slightly for readability */
     --font-size-s: 0.875rem;
     --font-size-m: var(--font-size-base);
     --font-size-l: 1.25rem;
@@ -30,12 +30,16 @@
     --bg-colour-tertiary: #e0e0e0;
 
     --border-colour-primary: #cccccc;
-    --border-colour-secondary: #999999;
+    --border-colour-secondary: #e0e0e0; /* Softer secondary border */
 
+    /* COMPONENT SPECIFIC */
+    --tag-bg: #e0e0e0;
+    --tag-text: #4a4a4a;
+    
     /* GEOMETRY */
     --width-full: 100%;
     --width-half: 50%;
-    --width-max-main: 800px;
+    --width-max-main: 900px;
     
     --space-0: 0;
     --space-xs: 0.25rem;
@@ -51,21 +55,9 @@
     /* OVERLAYS */
     --color-overlay: rgba(0, 0, 0, 0.5);
 
-    /* FORM PALETTE */
-    --form-bg-colour: #ffffff;
-    --form-label-colour: #1a1a1a;
-    --form-text-colour: #000000;
-    --form-placeholder-colour: #999999;
-    --form-border-colour: #cccccc;
-    --form-focus-colour: #000000;
-
-    /* FORM GEOMETRY */
-    --height-input: 2.5rem;
-    --height-textarea-s: 4rem;
-    --height-textarea-m: 8rem;
-    --height-textarea-l: 12rem;
-    
-    --width-full: 100%;
-    --width-half: 50%;
-    --width-third: 33.333%;
+    /* FORMS */
+    --input-height: 2.5rem;
+    --input-border: #cccccc;
+    --input-bg: #ffffff;
+    --input-focus: #000000;
 }

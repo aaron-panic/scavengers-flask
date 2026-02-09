@@ -6,7 +6,7 @@ from jinja2 import TemplateNotFound
 
 app = Flask(__name__)
 
-# [Mock Data Loading Code remains the same]
+# ... [load_mock_data and inject_global_data remain the same] ...
 def load_mock_data():
     data = {}
     mock_dir = os.path.join(app.root_path, 'mock_data')
@@ -25,6 +25,7 @@ def load_mock_data():
 def inject_global_data():
     return dict(mock=load_mock_data())
 
+# ... [index, test_panel, test_form, test_modal, test_table routes remain the same] ...
 @app.route('/')
 def index():
     return render_template('workbench/index.html')
@@ -40,18 +41,6 @@ def test_form():
 @app.route('/modal')
 def test_modal():
     return render_template('workbench/test_modal.html')
-
-@app.route('/nav_panel')
-def test_nav_panel():
-    # Use query string ?slug= instead of path param for simplicity in this refactor
-    slug = request.args.get('slug')
-    data = load_mock_data()
-    nav_items = data.get('family', {}).get('navigation', [])
-    
-    if not slug and nav_items:
-        slug = nav_items[0]['slug']
-        
-    return render_template('workbench/test_nav_panel.html', active_slug=slug)
 
 @app.route('/table')
 def test_table():
@@ -91,6 +80,39 @@ def test_table():
                            rows=users_slice, 
                            columns=columns, 
                            pagination=pagination)
+
+# --- REFACTORED ROUTES BELOW ---
+
+@app.route('/nav_panel')
+def test_nav_panel():
+    slug = request.args.get('slug')
+    data = load_mock_data()
+    nav_items = data.get('family', {}).get('navigation', [])
+    
+    # Default to first item if no slug provided
+    if not slug and nav_items:
+        slug = nav_items[0]['slug']
+    
+    # Construct Tabs Logic in Python
+    tabs = []
+    active_item = None
+    for item in nav_items:
+        is_active = (item['slug'] == slug)
+        if is_active:
+            active_item = item
+        tabs.append({
+            'label': item['label'],
+            'href': f"?slug={item['slug']}",
+            'active': is_active
+        })
+
+    # Fallback if slug is invalid
+    if not active_item and nav_items:
+        active_item = nav_items[0]
+        
+    return render_template('workbench/test_nav_panel.html', 
+                           tabs=tabs, 
+                           active_item=active_item)
 
 @app.route('/admin')
 def admin_panel():
@@ -167,6 +189,12 @@ def test_events():
     active_tab = request.args.get('tab', 'browse')
     active_tag = request.args.get('tag')
     
+    # Construct Tabs Logic in Python
+    tabs = [
+        {'label': 'Browse Events', 'href': '?tab=browse', 'active': (active_tab == 'browse')},
+        {'label': 'Add Event', 'href': '?tab=new', 'active': (active_tab == 'new')}
+    ]
+
     grid_items = []
     pagination = None
     all_tags = sorted(list(set(tag for event in all_events for tag in event['tags'])))
@@ -193,6 +221,7 @@ def test_events():
     
     return render_template('workbench/test_events.html',
                            active_tab=active_tab,
+                           tabs=tabs,
                            active_tag=active_tag,
                            all_tags=all_tags,
                            grid_items=grid_items,
