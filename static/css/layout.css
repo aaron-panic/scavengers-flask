@@ -220,11 +220,6 @@ dialog.modal {
     z-index: var(--z-modal);
 }
 
-dialog.modal::backdrop {
-    background-color: var(--color-overlay);
-    backdrop-filter: blur(2px);
-}
-
 dialog.modal form {
     display: flex;
     flex-direction: column;

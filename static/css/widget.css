@@ -260,6 +260,11 @@ dialog.modal .content {
     line-height: var(--line-height-standard);
 }
 
+dialog.modal::backdrop {
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(2px);
+}
+
 button.control {
     padding: var(--space-xs) var(--space-m);
     font-size: var(--font-size-s);
@@ -285,6 +290,12 @@ button.control.primary:hover {
     opacity: 0.9;
 }
 
+button.control.secondary {
+    background-color: var(--bg-colour-primary);
+    border-color: var(--border-colour-secondary);
+    color: var(--text-colour-primary);
+}
+
 button.control.destructive {
     background-color: var(--bg-colour-primary);
     color: var(--text-colour-error);
@@ -296,21 +307,16 @@ button.control.destructive:hover {
     color: var(--bg-colour-primary);
 }
 
-.modal .details-grid {
-    display: grid;
-    grid-template-columns: 120px auto;
-    column-gap: var(--space-m);
-    row-gap: var(--space-s);
-    margin: var(--space-0);
-    padding: var(--space-0);
+.modal .details-grid dt {
+    color: var(--text-colour-tertiary);
+    font-size: var(--font-size-s);
 }
 
-.modal .details-grid dt {
-    text-align: right;
-    font-weight: bold;
+.modal .details-grid dt::after {
+    content: ":";
 }
 
 .modal .details-grid dd {
-    margin: var(--space-0);
-    text-align: left;
-    wor
+    color: var(--text-colour-primary);
+    font-size: var(--font-size-base);
+}
