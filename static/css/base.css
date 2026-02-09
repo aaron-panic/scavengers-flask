@@ -43,4 +43,11 @@
     --space-m: 1rem;
     --space-l: 1.5rem;
     --space-xl: 2rem;
+
+    /* MODAL */
+    --z-modal: 1000;
+    --z-overlay: 900;
+
+    /* OVERLAYS */
+    --color-overlay: rgba(0, 0, 0, 0.5);
 }

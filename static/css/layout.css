@@ -211,6 +211,63 @@ th, td {
 }
 
 /* ========================================================================= */
+/* MODAL LAYOUT */
+dialog.modal {
+    margin: auto;
+    padding: var(--space-0);
+    width: 100%;
+    max-width: 500px;
+    z-index: var(--z-modal);
+}
+
+dialog.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+dialog.modal header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-m);
+    width: 100%;
+}
+
+dialog.modal .content {
+    padding: var(--space-m);
+    width: 100%;
+}
+
+dialog.modal menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-s);
+    padding: var(--space-m);
+    margin: var(--space-0);
+    width: 100%;
+}
+
+.modal .details-grid {
+    display: grid;
+    grid-template-columns: 120px auto;
+    column-gap: var(--space-m);
+    row-gap: var(--space-s);
+    margin: var(--space-0);
+    padding: var(--space-0);
+}
+
+.modal .details-grid dt {
+    text-align: right;
+    font-weight: bold;
+}
+
+.modal .details-grid dd {
+    margin: var(--space-0);
+    text-align: left;
+    word-break: break-word;
+}
+
+/* ========================================================================= */
 /* UTILITY */
 
 .hidden {

@@ -219,3 +219,104 @@ table tbody tr:hover {
     pointer-events: none;
     opacity: 0.5;
 }
+
+/* ========================================================================= */
+/* MODAL STYLE DEFINITIONS */
+
+dialog.modal {
+    background-color: var(--bg-colour-primary);
+    color: var(--text-colour-primary);
+    border: 1px solid var(--border-colour-primary);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+dialog.modal header {
+    background-color: var(--bg-colour-secondary);
+    border-bottom: 1px solid var(--border-colour-secondary);
+}
+
+dialog.modal header h1 {
+    margin: 0;
+    font-size: var(--font-size-l);
+    color: var(--text-colour-primary);
+}
+
+dialog.modal .btn-close {
+    background: transparent;
+    border: none;
+    font-size: var(--font-size-xl);
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-colour-tertiary);
+}
+
+dialog.modal .btn-close:hover {
+    color: var(--text-colour-primary);
+}
+
+dialog.modal .content {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-standard);
+}
+
+dialog.modal::backdrop {
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(2px);
+}
+
+button.control {
+    padding: var(--space-xs) var(--space-m);
+    font-size: var(--font-size-s);
+    font-family: var(--font-sans);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-colour-secondary);
+    background-color: var(--bg-colour-primary);
+    color: var(--text-colour-primary);
+}
+
+button.control:hover {
+    background-color: var(--bg-colour-secondary);
+}
+
+button.control.primary {
+    background-color: var(--text-colour-primary);
+    color: var(--bg-colour-primary);
+    border-color: var(--text-colour-primary);
+}
+
+button.control.primary:hover {
+    opacity: 0.9;
+}
+
+button.control.secondary {
+    background-color: var(--bg-colour-primary);
+    border-color: var(--border-colour-secondary);
+    color: var(--text-colour-primary);
+}
+
+button.control.destructive {
+    background-color: var(--bg-colour-primary);
+    color: var(--text-colour-error);
+    border-color: var(--text-colour-error);
+}
+
+button.control.destructive:hover {
+    background-color: var(--text-colour-error);
+    color: var(--bg-colour-primary);
+}
+
+.modal .details-grid dt {
+    color: var(--text-colour-tertiary);
+    font-size: var(--font-size-s);
+}
+
+.modal .details-grid dt::after {
+    content: ":";
+}
+
+.modal .details-grid dd {
+    color: var(--text-colour-primary);
+    font-size: var(--font-size-base);
+}

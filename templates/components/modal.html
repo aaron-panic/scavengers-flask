@@ -1,0 +1,33 @@
+{% macro render(id, data, classes=[]) %}
+<dialog id="{{ id }}" class="modal {{ classes|join(' ') }}">
+    <form method="dialog">
+        <header>
+            <h1>{{ data.title }}</h1>
+            <button class="btn-close" aria-label="Close">&times;</button>
+        </header>
+        
+        <section class="content">
+            {% if data.details %}
+                <dl class="details-grid">
+                    {% for item in data.details %}
+                        <dt>{{ item.key }}</dt>
+                        <dd>{{ item.value }}</dd>
+                    {% endfor %}
+                </dl>
+            {% else %}
+                <p>{{ data.content | safe }}</p>
+            {% endif %}
+        </section>
+
+        <menu>
+            {% for action in data.actions %}
+                {% if action.role == 'cancel' %}
+                    <button value="cancel" class="control {{ action.class }}">{{ action.label }}</button>
+                {% else %}
+                    <button type="button" class="control {{ action.class }}">{{ action.label }}</button>
+                {% endif %}
+            {% endfor %}
+        </menu>
+    </form>
+</dialog>
+{% endmacro %}

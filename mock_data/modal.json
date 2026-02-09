@@ -1,0 +1,44 @@
+{
+  "delete_user": {
+    "title": "Delete User Account",
+    "content": "Are you sure you want to permanently delete the account for <strong>Aaron Reichenbach</strong>? All associated data, including roast history, will be removed. This action cannot be undone.",
+    "actions": [
+      {"label": "Cancel", "role": "cancel", "class": "secondary"},
+      {"label": "Delete User", "role": "confirm", "class": "destructive"}
+    ]
+  },
+  "suspend_user": {
+    "title": "Suspend Account",
+    "content": "Please confirm suspension for <strong>Sudo Command</strong>. The user will be unable to log in for 24 hours.",
+    "actions": [
+      {"label": "Cancel", "role": "cancel", "class": "secondary"},
+      {"label": "Suspend", "role": "confirm", "class": "primary"}
+    ]
+  },
+  "reset_password": {
+    "title": "Reset Password",
+    "content": "This will invalidate the current password for <strong>Karen Abramson</strong> and email a temporary login link. Continue?",
+    "actions": [
+      {"label": "Cancel", "role": "cancel", "class": "secondary"},
+      {"label": "Send Reset Link", "role": "confirm", "class": "primary"}
+    ]
+  },
+  "user_details": {
+    "title": "User Details: Aaron Reichenbach",
+    "details": [
+      {"key": "User ID", "value": "1001"},
+      {"key": "Email", "value": "aaron@scavengers.net"},
+      {"key": "Role", "value": "Administrator"},
+      {"key": "Status", "value": "Active"},
+      {"key": "Date Joined", "value": "2023-11-04"},
+      {"key": "Last Login", "value": "2026-02-08 14:30:22"},
+      {"key": "Bio", "value": "The self-proclaimed 'architect' who thinks using a strongly-typed language is a personality trait."}
+    ],
+    "actions": [
+      {"label": "Edit Profile", "role": "button", "class": "secondary"},
+      {"label": "Reset Password", "role": "button", "class": "secondary"},
+      {"label": "Suspend User", "role": "button", "class": "destructive"},
+      {"label": "Close", "role": "cancel", "class": "primary"}
+    ]
+  }
+}
