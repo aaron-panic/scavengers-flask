@@ -1,0 +1,44 @@
+{% macro render(data, classes=[]) %}
+<article class="panel form-panel {{ classes|join(' ') }}">
+    <header>
+        <h1>{{ data.title }}</h1>
+        {% if data.description %}
+            <p class="subtitle">{{ data.description }}</p>
+        {% endif %}
+    </header>
+
+    <form action="{{ data.action }}" method="{{ data.method }}">
+        <section class="form-grid">
+            {% for field in data.fields %}
+            <div class="field-group {{ field.width }}">
+                <label for="{{ field.name }}">{{ field.label }}</label>
+                
+                {% if field.type == 'textarea' %}
+                    <textarea 
+                        id="{{ field.name }}" 
+                        name="{{ field.name }}" 
+                        class="{{ field.height }}"
+                        placeholder="{{ field.placeholder if field.placeholder else '' }}"
+                    ></textarea>
+                {% else %}
+                    <input 
+                        type="{{ field.type }}" 
+                        id="{{ field.name }}" 
+                        name="{{ field.name }}" 
+                        placeholder="{{ field.placeholder if field.placeholder else '' }}"
+                    >
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+
+        <footer>
+            <div class="action-group">
+                {% for btn in data.buttons %}
+                <button type="{{ btn.type }}" class="control {{ btn.class }}">{{ btn.label }}</button>
+                {% endfor %}
+            </div>
+        </footer>
+    </form>
+</article>
+{% endmacro %}

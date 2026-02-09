@@ -205,6 +205,13 @@ def test_modal():
     """
     return render_template('workbench/test_modal.html')
 
+@app.route('/form')
+def test_form():
+    """
+    Route to test the Form widget.
+    """
+    return render_template('workbench/test_form.html')
+
 if __name__ == '__main__':
     # Docker handles the port mapping, so we listen on 5000 internally
     app.run(host='0.0.0.0', port=5000, debug=True)
