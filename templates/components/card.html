@@ -1,14 +1,17 @@
 {% macro render(data) %}
-<div class="subpanel">
+<div class="card">
     <header>
         <h3>{{ data.title }}</h3>
-        <span class="meta-date">{{ data.date }}</span>
+        {% if data.meta %}
+        <span class="meta-date">{{ data.meta }}</span>
+        {% endif %}
     </header>
     
     <div class="content">
         <p>{{ data.description }}</p>
     </div>
 
+    {% if data.tags %}
     <footer>
         <div class="tag-cloud">
             {% for tag in data.tags %}
@@ -16,5 +19,6 @@
             {% endfor %}
         </div>
     </footer>
+    {% endif %}
 </div>
 {% endmacro %}

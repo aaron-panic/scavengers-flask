@@ -2,188 +2,131 @@
 
 {% block content %}
     <style>
-        /* Internal Development Styles - Not for Production */
+        /* Workbench-Specific Grid Layout */
+        .library-index {
+            margin-top: var(--space-l);
+        }
+
+        .library-index header {
+            margin-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--border-colour-secondary);
+            padding-bottom: var(--space-m);
+        }
+
+        .library-index header h1 {
+            margin-bottom: var(--space-xs);
+        }
+
+        .library-index header p {
+            color: var(--text-colour-secondary);
+            margin: 0;
+            font-size: var(--font-size-l);
+        }
+
         .library-index ul {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-m);
             list-style: none;
             padding: 0;
-            margin: 2rem 0;
-        }
-
-        .card {
-            border: 1px solid #ccc;
-            padding: 1.5rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-            transition: box-shadow 0.2s;
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card h2 {
-            margin-top: 0;
-            font-size: 1.25rem;
-        }
-
-        .card h2 a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        .card h2 a:hover {
-            text-decoration: underline;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 0.9rem;
-            flex-grow: 1;
-            margin-bottom: 1rem;
-        }
-
-        .card dl {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 0.5rem 1rem;
-            font-size: 0.8rem;
-            color: #888;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
             margin: 0;
         }
 
-        .card dt { font-weight: bold; }
-        .card dd { margin: 0; }
-
-        .data-inspector {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #ddd;
+        /* We use the standard .card class for the base look, 
+           but add specific overrides for the index interactivity 
+        */
+        .library-index .card {
+            height: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
         }
-        
-        .data-inspector pre {
-            background: #f5f5f5;
-            padding: 1rem;
-            overflow-x: auto;
-            border: 1px solid #ddd;
+
+        .library-index .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--border-colour-primary);
+        }
+
+        .library-index .card h2 {
+            margin-top: 0;
+            margin-bottom: var(--space-s);
+            font-size: var(--font-size-m);
+        }
+
+        .library-index .card a {
+            color: var(--text-colour-primary);
+            text-decoration: none;
+        }
+
+        .library-index .card a::after {
+            /* Make the whole card clickable */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .library-index .card p {
+            color: var(--text-colour-secondary);
+            font-size: var(--font-size-s);
+            margin: 0;
+            line-height: var(--line-height-standard);
         }
     </style>
 
     <section class="library-index">
         <header>
             <h1>Component Library</h1>
-            <p>Select a widget to view its states and variants.</p>
+            <p>Unified Design System</p>
         </header>
 
         <nav aria-label="Widget Directory">
             <ul>
                 <li>
-                    <article class="card">
-                        <h2><a href="/panel">Panel</a></h2>
-                        <p>Standard container for content blocks. Supports headers, footers, and varying content types.</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Complete</dd>
-                            <dt>Variants</dt>
-                            <dd>4</dd>
-                        </dl>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/panel">Panel Variants</a></h2>
+                        <p>Standard containers including Empty, Article, Tabbed, and Grid layouts.</p>
                     </article>
                 </li>
-
                 <li>
-                    <article class="card">
+                    <article class="card" style="position: relative;">
                         <h2><a href="/nav_panel">Navigation Panel</a></h2>
-                        <p>Standard container for tabbed content browsing within a panel widget.</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
+                        <p>Tabbed state management and sub-navigation handling.</p>
                     </article>
                 </li>
-
                 <li>
-                    <article class="card">
-                        <h2><a href="/table">Table Content</a></h2>
-                        <p>Variable table creation.</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/table">Table Data</a></h2>
+                        <p>Data-dense displays with automated pagination and row actions.</p>
                     </article>
                 </li>
-
                 <li>
-                    <article class="card">
-                        <h2><a href="/admin">Navigation Tables</a></h2>
-                        <p>Multiple tabbed tables</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/admin">Admin View</a></h2>
+                        <p>Composite view combining Tabbed Panels, Tables, and Action buttons.</p>
                     </article>
                 </li>
-
                 <li>
-                    <article class="card">
-                        <h2><a href="/modal">Modals</a></h2>
-                        <p>Testing Modal Generation</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/events">Events Dashboard</a></h2>
+                        <p>Complex dashboard featuring Tabs, Grid layouts, Cards, and Forms.</p>
                     </article>
                 </li>
-
                 <li>
-                    <article class="card">
+                    <article class="card" style="position: relative;">
                         <h2><a href="/form">Forms</a></h2>
-                        <p>Testing Form Look/Feel</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
+                        <p>Configuration-driven input arrays with standard validation styles.</p>
                     </article>
                 </li>
-
                 <li>
-                    <article class="card">
-                        <h2><a href="/events">Events</a></h2>
-                        <p>Testing Event Grid</p>
-                        <dl>
-                            <dt>Status</dt>
-                            <dd>Drafting</dd>
-                            <dt>Variants</dt>
-                            <dd>1</dd>
-                        </dl>
+                    <article class="card" style="position: relative;">
+                        <h2><a href="/modal">Modals</a></h2>
+                        <p>Native &lt;dialog&gt; overlays for critical interruptions and details.</p>
                     </article>
                 </li>
             </ul>
         </nav>
-    </section>
-
-    <section class="data-inspector">
-        <header>
-            <h2>Loaded Mock Data</h2>
-        </header>
-        <details>
-            <summary>View Raw JSON Context</summary>
-            <pre><code>{{ mock|tojson(indent=2) }}</code></pre>
-        </details>
     </section>
 {% endblock %}

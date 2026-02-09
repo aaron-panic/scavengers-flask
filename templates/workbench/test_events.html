@@ -1,23 +1,50 @@
 {% extends "base.html" %}
-{% import "components/nav_panel.html" as NavPanel %}
-{% import "components/subpanel_grid.html" as Grid %}
+{% import "components/panel.html" as Panel %}
+{% import "components/card.html" as Card %}
 {% import "components/form.html" as Form %}
 
 {% block content %}
-    
-    {% call NavPanel.render(data=nav_data, active_slug=active_tab) %}
-        
-        {% if active_tab == 'browse' %}
-            {{ Grid.render(
-                items=grid_items, 
-                pagination=pagination, 
-                active_filter=active_tag,
-                all_tags=all_tags
-            ) }}
-        {% elif active_tab == 'new' %}
-            {{ Form.render(data=form_data, embedded=True) }}
-        {% endif %}
-        
-    {% endcall %}
+
+{# Construct Filters (Only if Browse) #}
+{% set filters = [] %}
+{% if active_tab == 'browse' %}
+    {% set _ = filters.append({'label': 'All', 'href': '?tab=browse', 'active': (not active_tag)}) %}
+    {% for tag in all_tags %}
+        {% set _ = filters.append({
+            'label': '#' + tag, 
+            'href': '?tab=browse&tag=' + tag, 
+            'active': (active_tag == tag)
+        }) %}
+    {% endfor %}
+{% endif %}
+
+{# Render Panel #}
+{% call Panel.render(
+    type='tabbed',
+    header={'title': 'Event Dashboard'},
+    tabs=tabs,
+    filters=filters if active_tab == 'browse' else None,
+    pagination=pagination if active_tab == 'browse' else None,
+    content_classes=['grid-layout'] if active_tab == 'browse' else []
+) %}
+
+    {% if active_tab == 'browse' %}
+        {# Render Grid of Cards #}
+        {% for item in grid_items %}
+            {% set card_data = {
+                'title': item.title,
+                'description': item.description,
+                'meta': item.date,
+                'tags': item.tags
+            } %}
+            {{ Card.render(card_data) }}
+        {% endfor %}
+
+    {% elif active_tab == 'new' %}
+        {# Render Form #}
+        {{ Form.render(data=form_data) }}
+    {% endif %}
+
+{% endcall %}
 
 {% endblock %}

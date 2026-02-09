@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scavengers Widget Workbench</title>
+    <title>Scavengers Workbench</title>
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">  
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
@@ -13,7 +13,7 @@
     
     <header class="base-header">
         <nav>
-            <a href="/">Workbench Home</a>
+            <a href="/" class="btn" style="border:none; font-weight:bold; font-size:1.2rem;">Workbench Home</a>
         </nav>
     </header>
 
@@ -21,5 +21,6 @@
         {% block content %}{% endblock %}
     </main>
 
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
 </body>
 </html>

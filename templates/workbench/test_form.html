@@ -1,9 +1,15 @@
 {% extends "base.html" %}
+{% import "components/panel.html" as Panel %}
 {% import "components/form.html" as Form %}
 
 {% block content %}
 <h1>Form Widget Test</h1>
 
-{{ Form.render(data=mock.forms.request_form) }}
+{% call Panel.render(
+    type='article',
+    header={'title': mock.forms.request_form.title, 'subtitle': mock.forms.request_form.description}
+) %}
+    {{ Form.render(data=mock.forms.request_form) }}
+{% endcall %}
 
 {% endblock %}

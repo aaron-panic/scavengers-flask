@@ -1,443 +1,192 @@
 /* ========================================================================= */
-/* PANEL STYLE DEFINITIONS */
-
+/* 1. MASTER PANEL */
 .panel {
     background-color: var(--bg-colour-primary);
     border: 1px solid var(--border-colour-primary);
     color: var(--text-colour-primary);
     font-family: var(--font-sans);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-standard);
 }
 
 .panel header {
     background-color: var(--bg-colour-secondary);
-    border-bottom: 1px solid var(--border-colour-secondary);
-    color: var(--text-colour-primary);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-standard);
+    border-bottom: 1px solid var(--border-colour-primary);
 }
 
 .panel header h1 {
-    background-color: transparent;
-    border: none;
-    color: var(--text-colour-primary);
-    font-family: var(--font-sans);
     font-size: var(--font-size-xl);
     line-height: var(--line-height-compact);
+    color: var(--text-colour-primary);
 }
 
 .panel header .subtitle {
-    background-color: transparent;
-    border: none;
-    color: var(--text-colour-secondary);
-    font-family: var(--font-sans);
     font-size: var(--font-size-l);
-    line-height: var(--line-height-compact);
-}
-
-.panel header .meta {
-    background-color: transparent;
-    border: none;
-    color: var(--text-colour-tertiary);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-s);
-    line-height: var(--line-height-compact);
-}
-
-.panel header .meta dt {
-    background-color: transparent;
-    border: none;
-    color: var(--text-colour-tertiary);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-s);
-    line-height: var(--line-height-compact);
-}
-
-.panel header .meta dd {
-    background-color: transparent;
-    border: none;
     color: var(--text-colour-secondary);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-s);
-    line-height: var(--line-height-compact);
 }
 
-.panel header .meta time {
-    background-color: transparent;
-    border: none;
-    color: var(--text-colour-secondary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-compact);
-}
+.panel header .meta { color: var(--text-colour-tertiary); font-size: var(--font-size-s); }
+.panel header .meta dt { font-weight: bold; }
 
-.panel .content {
-    background-color: var(--bg-colour-primary);
-    border: none;
-    color: var(--text-colour-primary);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-standard);
-}
-
-.panel footer {
-    background-color: var(--bg-colour-tertiary);
-    border-top: 1px solid var(--border-colour-secondary);
-    color: var(--text-colour-secondary);
-    font-family: var(--font-sans);
-    font-size: var(--font-size-s);
-    line-height: var(--line-height-compact);
-}
-
-/* ========================================================================= */
-/* PANEL NAVIGATION STYLE DEFINITIONS */
-
+/* Tabs */
 .panel header nav a {
     color: var(--text-colour-secondary);
     text-decoration: none;
     font-size: var(--font-size-s);
     border-bottom: 2px solid transparent;
     padding-bottom: var(--space-xs);
-    display: block;
+    transition: color 0.2s, border-color 0.2s;
 }
-
-.panel header nav a:hover {
-    color: var(--text-colour-primary);
-}
-
+.panel header nav a:hover { color: var(--text-colour-primary); }
 .panel header nav a.current {
     color: var(--text-colour-primary);
     border-bottom-color: var(--text-colour-primary);
     font-weight: bold;
 }
 
-.panel footer nav.pagination .control {
-    background-color: transparent;
-    border: 1px solid transparent;
-    color: var(--text-colour-primary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    cursor: pointer;
-    border-radius: var(--radius-sm);
+/* Toolbar */
+.panel .toolbar {
+    background-color: var(--bg-colour-tertiary);
+    border-bottom: 1px solid var(--border-colour-primary);
 }
 
-.panel footer nav.pagination .control:hover:not(:disabled) {
+/* Footer */
+.panel footer {
     background-color: var(--bg-colour-secondary);
-    border-color: var(--border-colour-primary);
-}
-
-.panel footer nav.pagination .control:disabled {
-    color: var(--text-colour-tertiary);
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
-.panel footer nav.pagination .status {
+    border-top: 1px solid var(--border-colour-primary);
     color: var(--text-colour-secondary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-s);
 }
 
 /* ========================================================================= */
-/* TABLE STYLE DEFINITIONS */
-
-.table-container {
+/* 2. CARD & TAGS */
+.card {
     background-color: var(--bg-colour-primary);
-    border: 1px solid var(--border-colour-primary);
-}
-
-table th {
-    background-color: var(--bg-colour-secondary);
-    color: var(--text-colour-primary);
-    font-weight: bold;
-    font-size: var(--font-size-s);
-    border-bottom: 2px solid var(--border-colour-primary);
-}
-
-table td {
-    color: var(--text-colour-primary);
-    font-size: var(--font-size-s);
-    border-bottom: 1px solid var(--border-colour-secondary);
-}
-
-table tbody tr:nth-child(even) {
-    background-color: var(--bg-colour-secondary);
-}
-
-table tbody tr:hover {
-    background-color: var(--bg-colour-tertiary);
-}
-
-.btn-icon {
-    background: transparent;
     border: 1px solid var(--border-colour-secondary);
-    border-radius: var(--radius-sm);
-    color: var(--text-colour-secondary);
-    cursor: pointer;
-    padding: var(--space-xs);
-    font-size: var(--font-size-s);
-    line-height: 1;
-    width: 32px;
-    height: 32px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 4px;
+    transition: box-shadow 0.2s, border-color 0.2s;
 }
-
-.btn-icon:hover {
-    background-color: var(--bg-colour-tertiary);
-    color: var(--text-colour-primary);
+.card:hover {
     border-color: var(--border-colour-primary);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.btn-icon.destructive:hover {
-    color: var(--text-colour-error);
-    border-color: var(--text-colour-error);
-}
-
-.pagination a.control {
-    text-decoration: none;
-    display: inline-block;
-    background-color: transparent;
-    border: 1px solid transparent;
-    color: var(--text-colour-primary);
-    font-family: var(--font-mono);
-    font-size: var(--font-size-xs);
-    padding: var(--space-xs) var(--space-s);
-    border-radius: var(--radius-sm);
-}
-
-.pagination a.control:hover:not(.disabled) {
-    background-color: var(--bg-colour-secondary);
-    border-color: var(--border-colour-primary);
-}
-
-.pagination a.control.disabled {
-    color: var(--text-colour-tertiary);
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-/* ========================================================================= */
-/* MODAL STYLE DEFINITIONS */
-
-dialog.modal {
-    background-color: var(--bg-colour-primary);
-    color: var(--text-colour-primary);
-    border: 1px solid var(--border-colour-primary);
-    border-radius: var(--radius-md);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-dialog.modal header {
-    background-color: var(--bg-colour-secondary);
-    border-bottom: 1px solid var(--border-colour-secondary);
-}
-
-dialog.modal header h1 {
+.card header h3 {
     margin: 0;
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-m);
     color: var(--text-colour-primary);
 }
-
-dialog.modal .btn-close {
-    background: transparent;
-    border: none;
-    font-size: var(--font-size-xl);
-    line-height: 1;
-    cursor: pointer;
+.card header .meta-date {
+    font-size: var(--font-size-xs);
     color: var(--text-colour-tertiary);
 }
 
-dialog.modal .btn-close:hover {
-    color: var(--text-colour-primary);
-}
-
-dialog.modal .content {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-standard);
-}
-
-dialog.modal::backdrop {
-    background-color: var(--color-overlay);
-    backdrop-filter: blur(2px);
-}
-
-button.control {
-    padding: var(--space-xs) var(--space-m);
-    font-size: var(--font-size-s);
-    font-family: var(--font-sans);
-    cursor: pointer;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-colour-secondary);
-    background-color: var(--bg-colour-primary);
-    color: var(--text-colour-primary);
-}
-
-button.control:hover {
-    background-color: var(--bg-colour-secondary);
-}
-
-button.control.primary {
-    background-color: var(--text-colour-primary);
-    color: var(--bg-colour-primary);
-    border-color: var(--text-colour-primary);
-}
-
-button.control.primary:hover {
-    opacity: 0.9;
-}
-
-button.control.secondary {
-    background-color: var(--bg-colour-primary);
-    border-color: var(--border-colour-secondary);
-    color: var(--text-colour-primary);
-}
-
-button.control.destructive {
-    background-color: var(--bg-colour-primary);
-    color: var(--text-colour-error);
-    border-color: var(--text-colour-error);
-}
-
-button.control.destructive:hover {
-    background-color: var(--text-colour-error);
-    color: var(--bg-colour-primary);
-}
-
-.modal .details-grid dt {
-    color: var(--text-colour-tertiary);
-    font-size: var(--font-size-s);
-}
-
-.modal .details-grid dt::after {
-    content: ":";
-}
-
-.modal .details-grid dd {
-    color: var(--text-colour-primary);
-    font-size: var(--font-size-base);
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 8px;
+    border-radius: 999px; /* Pill shape */
+    font-size: var(--font-size-xs);
+    font-family: var(--font-mono);
 }
 
 /* ========================================================================= */
-/* FORM STYLE DEFINITIONS */
-
+/* 3. FORMS */
 .field-group label {
     font-size: var(--font-size-s);
     font-weight: bold;
-    color: var(--form-label-colour);
+    color: var(--text-colour-primary);
 }
 
 .field-group input,
 .field-group textarea {
-    background-color: var(--form-bg-colour);
-    border: 1px solid var(--form-border-colour);
-    border-radius: var(--radius-sm);
-    color: var(--form-text-colour);
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
     padding: var(--space-s);
-    font-family: var(--font-sans);
     font-size: var(--font-size-base);
-    transition: border-color 0.2s ease;
+    font-family: var(--font-sans);
+    height: var(--input-height);
+}
+.field-group textarea {
+    height: auto;
+    min-height: 5rem;
 }
 
 .field-group input:focus,
 .field-group textarea:focus {
     outline: none;
-    border-color: var(--form-focus-colour);
+    border-color: var(--input-focus);
 }
 
-.field-group input::placeholder,
-.field-group textarea::placeholder {
-    color: var(--form-placeholder-colour);
-}
-
-.height-s { height: var(--height-textarea-s); }
-.height-m { height: var(--height-textarea-m); }
-.height-l { height: var(--height-textarea-l); }
-
-.field-group input {
-    height: var(--height-input);
+.form-actions {
+    border-top: 1px solid var(--border-colour-secondary);
 }
 
 /* ========================================================================= */
-/* SUBPANEL STYLES DEFINITION */
-.subpanel {
-    background-color: var(--bg-colour-primary);
-    border: 1px solid var(--border-colour-secondary);
-    border-radius: var(--radius-sm);
-    padding: var(--space-m);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.subpanel:hover {
-    border-color: var(--border-colour-primary);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.subpanel header h3 {
-    margin: 0;
-    font-size: var(--font-size-m);
-    color: var(--text-colour-primary);
-}
-
-.subpanel header .meta-date {
-    font-size: var(--font-size-xs);
-    color: var(--text-colour-tertiary);
-    font-family: var(--font-mono);
-}
-
-.subpanel .content p {
-    margin: 0;
-    font-size: var(--font-size-s);
-    color: var(--text-colour-secondary);
-}
-
-/* ========================================================================= */
-/* TAGS STYLE DEFINITIONS */
-.tag {
-    display: inline-block;
-    font-size: var(--font-size-xs);
-    font-family: var(--font-mono);
-    color: var(--text-colour-secondary);
+/* 4. TABLES */
+table th {
     background-color: var(--bg-colour-secondary);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    margin-right: 4px;
+    border-bottom: 2px solid var(--border-colour-primary);
+    font-weight: bold;
+    font-size: var(--font-size-s);
+}
+table td {
+    border-bottom: 1px solid var(--border-colour-secondary);
+    font-size: var(--font-size-s);
+}
+table tbody tr:hover {
+    background-color: var(--bg-colour-secondary);
 }
 
 /* ========================================================================= */
-/* FILTER TOOLBAR STYLE DEFINITIONS*/
-.grid-toolbar {
-    background-color: var(--bg-colour-tertiary);
-}
-
-.filter-controls .label {
-    font-size: var(--font-size-xs);
-    font-weight: bold;
-    color: var(--text-colour-secondary);
-    text-transform: uppercase;
-}
-
-.filter-tag {
-    text-decoration: none;
-    font-size: var(--font-size-xs);
-    font-family: var(--font-mono);
-    color: var(--text-colour-secondary);
-    padding: 2px 6px;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    transition: all 0.2s;
-}
-
-.filter-tag:hover {
+/* 5. MODALS */
+dialog.modal {
     background-color: var(--bg-colour-primary);
-    color: var(--text-colour-primary);
+    border: 1px solid var(--border-colour-primary);
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+dialog.modal::backdrop {
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(2px);
 }
 
-.filter-tag.active {
+.details-grid dt {
+    font-weight: bold;
+    color: var(--text-colour-tertiary);
+}
+.details-grid dt::after { content: ":"; }
+
+/* ========================================================================= */
+/* 6. BUTTONS */
+.btn {
+    background-color: transparent;
+    border: 1px solid var(--border-colour-primary);
+    border-radius: 4px;
+    color: var(--text-colour-primary);
+    font-size: var(--font-size-s);
+    transition: background-color 0.1s;
+}
+.btn:hover {
+    background-color: var(--bg-colour-secondary);
+}
+
+.btn.inverted {
     background-color: var(--text-colour-primary);
     color: var(--bg-colour-primary);
     border-color: var(--text-colour-primary);
+}
+.btn.inverted:hover { opacity: 0.9; }
+
+.btn.destructive {
+    color: var(--text-colour-error);
+    border-color: var(--text-colour-error);
+}
+.btn.destructive:hover {
+    background-color: var(--text-colour-error);
+    color: white;
+}
+.btn.btn-close {
+    border: none;
+    font-size: var(--font-size-l);
+    line-height: 1;
 }

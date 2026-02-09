@@ -1,60 +1,49 @@
 import os
 import json
 import math
-from flask import Flask, render_template, abort, request
+from flask import Flask, render_template, abort, request, url_for
 from jinja2 import TemplateNotFound
 
 app = Flask(__name__)
 
+# ... [load_mock_data and inject_global_data remain the same] ...
 def load_mock_data():
-    """
-    Scans the mock_data directory and loads all JSON files 
-    into a dictionary keyed by filename.
-    """
     data = {}
     mock_dir = os.path.join(app.root_path, 'mock_data')
-    
     if os.path.exists(mock_dir):
         for filename in os.listdir(mock_dir):
             if filename.endswith('.json'):
                 key = filename.replace('.json', '')
-                filepath = os.path.join(mock_dir, filename)
                 try:
-                    with open(filepath, 'r') as f:
+                    with open(os.path.join(mock_dir, filename), 'r') as f:
                         data[key] = json.load(f)
                 except json.JSONDecodeError:
-                    print(f"Error decoding {filename}")
                     data[key] = {}
     return data
 
 @app.context_processor
 def inject_global_data():
-    """
-    Injects the mock data into every template automatically.
-    Usage in Jinja: {{ mock.filename.key }}
-    """
     return dict(mock=load_mock_data())
 
+# ... [index, test_panel, test_form, test_modal, test_table routes remain the same] ...
 @app.route('/')
 def index():
-    """Listing of all available widget tests."""
     return render_template('workbench/index.html')
 
-@app.route('/<widget_name>')
-def test_widget(widget_name):
-    """
-    Dynamic route to load test templates.
-    """
-    try:
-        return render_template(f'workbench/test_{widget_name}.html')
-    except TemplateNotFound:
-        abort(404)
+@app.route('/panel')
+def test_panel():
+    return render_template('workbench/test_panel.html')
+
+@app.route('/form')
+def test_form():
+    return render_template('workbench/test_form.html')
+
+@app.route('/modal')
+def test_modal():
+    return render_template('workbench/test_modal.html')
 
 @app.route('/table')
 def test_table():
-    """
-    Route to test the Table widget with pagination logic.
-    """
     data = load_mock_data()
     all_users = data.get('users', [])
     
@@ -75,8 +64,8 @@ def test_table():
         'pages': total_pages,
         'has_prev': page > 1,
         'has_next': page < total_pages,
-        'prev_num': page - 1,
-        'next_num': page + 1
+        'prev_href': f"?page={page-1}",
+        'next_href': f"?page={page+1}"
     }
     
     columns = [
@@ -92,23 +81,49 @@ def test_table():
                            columns=columns, 
                            pagination=pagination)
 
+# --- REFACTORED ROUTES BELOW ---
+
+@app.route('/nav_panel')
+def test_nav_panel():
+    slug = request.args.get('slug')
+    data = load_mock_data()
+    nav_items = data.get('family', {}).get('navigation', [])
+    
+    # Default to first item if no slug provided
+    if not slug and nav_items:
+        slug = nav_items[0]['slug']
+    
+    # Construct Tabs Logic in Python
+    tabs = []
+    active_item = None
+    for item in nav_items:
+        is_active = (item['slug'] == slug)
+        if is_active:
+            active_item = item
+        tabs.append({
+            'label': item['label'],
+            'href': f"?slug={item['slug']}",
+            'active': is_active
+        })
+
+    # Fallback if slug is invalid
+    if not active_item and nav_items:
+        active_item = nav_items[0]
+        
+    return render_template('workbench/test_nav_panel.html', 
+                           tabs=tabs, 
+                           active_item=active_item)
+
 @app.route('/admin')
 def admin_panel():
-    """
-    Combines NavPanel and Table widgets.
-    """
     data = load_mock_data()
+    active_tab = request.args.get('tab', 'users')
     
-    requested_tab = request.args.get('tab', 'users')
-    
-    nav_structure = [
-        {'slug': 'users', 'label': 'Users', 'title': 'User Administration'},
-        {'slug': 'announcements', 'label': 'Announcements', 'title': 'System Announcements'}
+    # Define Tabs
+    tabs = [
+        {'label': 'Users', 'href': '?tab=users', 'active': (active_tab == 'users')},
+        {'label': 'Announcements', 'href': '?tab=announcements', 'active': (active_tab == 'announcements')}
     ]
-    
-    # VALIDATION FIX: Ensure requested tab exists, otherwise default to 'users'
-    valid_slugs = [item['slug'] for item in nav_structure]
-    active_tab = requested_tab if requested_tab in valid_slugs else 'users'
     
     rows = []
     columns = []
@@ -120,8 +135,7 @@ def admin_panel():
             {'key': 'id', 'label': 'ID', 'class': 'col-narrow'},
             {'key': 'name', 'label': 'Name'},
             {'key': 'email', 'label': 'Email'},
-            {'key': 'role', 'label': 'Role', 'class': 'col-narrow'},
-            {'key': 'status', 'label': 'Status', 'class': 'col-narrow'}
+            {'key': 'role', 'label': 'Role', 'class': 'col-narrow'}
         ]
         actions = [
             {'label': 'Approve', 'icon': '&#10003;', 'class': ''},
@@ -130,31 +144,21 @@ def admin_panel():
         ]
         
     elif active_tab == 'announcements':
-        raw_rows = data.get('announcements', [])
-        rows = []
-        for r in raw_rows:
-            item = r.copy()
-            if len(item['title']) > 25:
-                item['title'] = item['title'][:25] + '...'
-            rows.append(item)
-            
+        rows = data.get('announcements', [])
         columns = [
             {'key': 'id', 'label': 'ID', 'class': 'col-narrow'},
             {'key': 'title', 'label': 'Title'},
-            {'key': 'username', 'label': 'Posted By'},
-            {'key': 'timestamp', 'label': 'Date', 'class': 'col-narrow'}
+            {'key': 'username', 'label': 'Posted By'}
         ]
         actions = [
             {'label': 'Modify', 'icon': '&#9998;', 'class': ''},
-            {'label': 'Hide', 'icon': '&#128065;', 'class': ''},
             {'label': 'Delete', 'icon': '&#10005;', 'class': 'destructive'}
         ]
 
+    # Pagination
     page = request.args.get('page', 1, type=int)
     per_page = 25
-    total_items = len(rows)
-    total_pages = math.ceil(total_items / per_page)
-    
+    total_pages = math.ceil(len(rows) / per_page)
     if page < 1: page = 1
     if page > total_pages and total_pages > 0: page = total_pages
     
@@ -167,106 +171,62 @@ def admin_panel():
         'pages': total_pages,
         'has_prev': page > 1,
         'has_next': page < total_pages,
-        'prev_num': page - 1,
-        'next_num': page + 1
+        'prev_href': f"?tab={active_tab}&page={page-1}",
+        'next_href': f"?tab={active_tab}&page={page+1}"
     }
 
     return render_template('workbench/test_nav_tables.html',
-                           nav_data=nav_structure,
-                           active_tab=active_tab,
+                           tabs=tabs,
                            columns=columns,
                            rows=rows_slice,
                            actions=actions,
                            pagination=pagination)
 
-@app.route('/nav_panel')
-@app.route('/nav_panel/<slug>')
-def test_nav_panel(slug=None):
-    """
-    Specific route for the Navigation Panel widget to handle state.
-    """
-    data = load_mock_data()
-    nav_items = data.get('family', {}).get('navigation', [])
-    
-    valid_slugs = [item['slug'] for item in nav_items]
-    
-    if not slug or slug not in valid_slugs:
-        if nav_items:
-            slug = nav_items[0]['slug']
-        else:
-            return "No navigation data found", 404
-        
-    return render_template('workbench/test_nav_panel.html', active_slug=slug)
-
-@app.route('/modal')
-def test_modal():
-    """
-    Route to test the Modal widget variants.
-    """
-    return render_template('workbench/test_modal.html')
-
-@app.route('/form')
-def test_form():
-    """
-    Route to test the Form widget.
-    """
-    return render_template('workbench/test_form.html')
-
 @app.route('/events')
 def test_events():
-    """
-    Demonstrates a NavPanel containing a Subpanel Grid and an Embedded Form.
-    """
     data = load_mock_data()
     all_events = data.get('events', [])
-    
     active_tab = request.args.get('tab', 'browse')
-    nav_structure = [
-        {'slug': 'browse', 'label': 'Browse Events', 'title': 'Event Dashboard'},
-        {'slug': 'new', 'label': 'Add Event', 'title': 'Schedule New Event'}
+    active_tag = request.args.get('tag')
+    
+    # Construct Tabs Logic in Python
+    tabs = [
+        {'label': 'Browse Events', 'href': '?tab=browse', 'active': (active_tab == 'browse')},
+        {'label': 'Add Event', 'href': '?tab=new', 'active': (active_tab == 'new')}
     ]
 
     grid_items = []
-    pagination = {}
+    pagination = None
     all_tags = sorted(list(set(tag for event in all_events for tag in event['tags'])))
-    active_tag = request.args.get('tag')
-
+    
     if active_tab == 'browse':
-        # Filtering
-        if active_tag:
-            filtered_events = [e for e in all_events if active_tag in e['tags']]
-        else:
-            filtered_events = all_events
+        filtered = [e for e in all_events if active_tag in e['tags']] if active_tag else all_events
         
-        # Pagination
         page = request.args.get('page', 1, type=int)
         per_page = 4
-        total_pages = math.ceil(len(filtered_events) / per_page)
-        
+        total_pages = math.ceil(len(filtered) / per_page)
         start = (page - 1) * per_page
-        end = start + per_page
-        grid_items = filtered_events[start:end]
+        grid_items = filtered[start:start+per_page]
         
         pagination = {
             'page': page,
             'pages': total_pages,
             'has_prev': page > 1,
             'has_next': page < total_pages,
-            'prev_num': page - 1,
-            'next_num': page + 1
+            'prev_href': f"?tab=browse&page={page-1}&tag={active_tag or ''}",
+            'next_href': f"?tab=browse&page={page+1}&tag={active_tag or ''}"
         }
 
     form_data = data.get('forms', {}).get('request_form', {})
     
     return render_template('workbench/test_events.html',
-                           nav_data=nav_structure,
                            active_tab=active_tab,
+                           tabs=tabs,
+                           active_tag=active_tag,
+                           all_tags=all_tags,
                            grid_items=grid_items,
                            pagination=pagination,
-                           all_tags=all_tags,
-                           active_tag=active_tag,
                            form_data=form_data)
 
 if __name__ == '__main__':
-    # Docker handles the port mapping, so we listen on 5000 internally
     app.run(host='0.0.0.0', port=5000, debug=True)

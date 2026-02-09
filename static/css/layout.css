@@ -1,5 +1,5 @@
 /* ========================================================================= */
-/* RESET */
+/* 1. RESET & BOX MODEL */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -11,8 +11,7 @@ html, body {
 }
 
 /* ========================================================================= */
-/* BASE LAYOUT DEFINITIONS */
-
+/* 2. BASE LAYOUT */
 .base-header {
     display: block;
     width: var(--width-full);
@@ -20,182 +19,174 @@ html, body {
     padding: var(--space-m);
 }
 
-.base-header nav {
-    display: block;
-    width: var(--width-full);
-}
-
 main {
     display: block;
     width: var(--width-full);
     max-width: var(--width-max-main);
-    margin: var(--space-0) auto; /* Center the main container */
+    margin: var(--space-0) auto;
     padding: var(--space-l);
 }
 
 /* ========================================================================= */
-/* PANEL LAYOUT DEFINITIONS */
-
+/* 3. PANEL LAYOUT */
 .panel {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: var(--width-full);
-    margin: var(--space-0);
     margin-bottom: var(--space-l);
-    padding: var(--space-0);
-    box-sizing: border-box;
 }
 
 .panel header {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
     padding: var(--space-m);
-    box-sizing: border-box;
 }
 
 .panel header h1 {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    margin-bottom: var(--space-xs);
-    padding: var(--space-0);
+    margin: 0 0 var(--space-xs) 0;
 }
 
 .panel header .subtitle {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    margin-bottom: var(--space-s);
-    padding: var(--space-0);
+    margin: 0 0 var(--space-s) 0;
 }
 
+/* Meta Data */
 .panel header .meta {
     display: flex;
-    flex-direction: row;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-0);
+    margin: 0;
+    padding: 0;
 }
+.panel header .meta dt { margin-right: var(--space-xs); }
+.panel header .meta dd { margin: 0; margin-right: var(--space-m); }
 
-.panel header .meta dt {
-    display: block;
-    margin: var(--space-0);
-    margin-right: var(--space-xs);
-    padding: var(--space-0);
-    text-align: left;
-}
-
-.panel header .meta dd {
-    display: block;
-    margin: var(--space-0);
-    padding: var(--space-0);
-    text-align: left;
-}
-
-.panel header .meta dd:first-of-type {
-    margin-right: auto; 
-}
-
-.panel .content {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-m);
-    box-sizing: border-box;
-}
-
-.panel .content p {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    margin-bottom: var(--space-m);
-    padding: var(--space-0);
-}
-
-.panel .content p:last-child {
-    margin-bottom: var(--space-0);
-}
-
-.panel footer {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-s) var(--space-m);
-    box-sizing: border-box;
-}
-
-/* ========================================================================= */
-/* PANEL NAVIGATION LAYOUT DEFINITIONS*/
-
-.panel header nav {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-0);
-}
-
+/* Nav Tabs */
 .panel header nav ul {
     display: flex;
-    flex-direction: row;
     list-style: none;
-    margin: var(--space-0);
-    padding: var(--space-0);
+    margin: var(--space-m) 0 0 0;
+    padding: 0;
     gap: var(--space-m);
 }
 
-.panel header nav li {
-    display: block;
-    margin: var(--space-0);
-    padding: var(--space-0);
+/* Toolbar */
+.panel .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-s) var(--space-m);
+}
+.panel .toolbar .filters {
+    display: flex;
+    gap: var(--space-s);
+}
+
+/* Content */
+.panel .content {
+    padding: var(--space-m);
+    flex-grow: 1;
+}
+
+.panel .content.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-m);
+}
+
+/* Footer */
+.panel footer {
+    padding: var(--space-s) var(--space-m);
+    margin-top: auto;
 }
 
 .panel footer nav.pagination {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-0);
-}
-
-.panel footer nav.pagination .control {
-    display: block;
-    margin: var(--space-0);
-    padding: var(--space-xs) var(--space-s);
-}
-
-.panel footer nav.pagination .status {
-    display: block;
-    margin: var(--space-0);
-    padding: var(--space-0);
 }
 
 /* ========================================================================= */
-/* TABLE LAYOUT DEFINITIONS*/
+/* 4. CARD LAYOUT */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-m);
+}
+
+.card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0;
+    margin-bottom: var(--space-s);
+}
+
+.card .content {
+    flex-grow: 1;
+    padding: 0;
+    margin-bottom: var(--space-m);
+}
+
+.card footer {
+    padding: 0;
+    margin-top: auto;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* ========================================================================= */
+/* 5. FORM LAYOUT */
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Default to full width */
+}
+
+/* Width Utility Classes for Fields */
+.field-group.full-width { width: 100%; }
+.field-group.half-width { width: calc(50% - (var(--space-m) / 2)); }
+.field-group.one-third-width { width: calc(33.333% - (var(--space-m) * 0.66)); }
+
+.field-group label {
+    margin-bottom: var(--space-xs);
+}
+
+.field-group input,
+.field-group textarea {
+    width: 100%;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-s);
+    margin-top: var(--space-m);
+    padding-top: var(--space-m);
+}
+
+/* ========================================================================= */
+/* 6. TABLE LAYOUT */
 .table-container {
-    display: block;
-    width: var(--width-full);
-    margin: var(--space-0);
-    padding: var(--space-0);
+    width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
 }
 
 table {
-    width: var(--width-full);
+    width: 100%;
     border-collapse: collapse;
-    min-width: 600px;
 }
 
 th, td {
     padding: var(--space-s) var(--space-m);
     text-align: left;
-}
-
-.col-narrow {
-    width: 1%;
-    white-space: nowrap;
 }
 
 .col-actions {
@@ -206,24 +197,18 @@ th, td {
 
 .action-group {
     display: flex;
-    gap: var(--space-xs);
     justify-content: flex-end;
+    gap: var(--space-xs);
 }
 
 /* ========================================================================= */
-/* MODAL LAYOUT */
-
+/* 7. MODAL LAYOUT */
 dialog.modal {
     margin: auto;
-    padding: var(--space-0);
+    padding: 0;
     width: 100%;
     max-width: 500px;
     z-index: var(--z-modal);
-}
-
-dialog.modal form {
-    display: flex;
-    flex-direction: column;
 }
 
 dialog.modal header {
@@ -231,12 +216,10 @@ dialog.modal header {
     justify-content: space-between;
     align-items: center;
     padding: var(--space-m);
-    width: 100%;
 }
 
 dialog.modal .content {
     padding: var(--space-m);
-    width: 100%;
 }
 
 dialog.modal menu {
@@ -244,145 +227,37 @@ dialog.modal menu {
     justify-content: flex-end;
     gap: var(--space-s);
     padding: var(--space-m);
-    margin: var(--space-0);
-    width: 100%;
+    margin: 0;
 }
 
-.modal .details-grid {
+/* Definition List Grid */
+.details-grid {
     display: grid;
-    grid-template-columns: 120px auto;
-    column-gap: var(--space-m);
-    row-gap: var(--space-s);
-    margin: var(--space-0);
-    padding: var(--space-0);
+    grid-template-columns: 100px auto;
+    gap: var(--space-s) var(--space-m);
+    margin: 0;
 }
-
-.modal .details-grid dt {
-    text-align: right;
-    font-weight: bold;
-}
-
-.modal .details-grid dd {
-    margin: var(--space-0);
-    text-align: left;
-    word-break: break-word;
-}
+.details-grid dt { text-align: right; }
+.details-grid dd { margin: 0; }
 
 /* ========================================================================= */
-/* FORM LAYOUT */
-.form-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-m);
-    padding: var(--space-m);
-    width: var(--width-full);
-}
-
-.field-group {
-    display: flex;
-    flex-direction: column;
-    width: var(--width-full); 
-}
-
-.field-group.full-width {
-    width: 100%;
-}
-
-.field-group.half-width {
-    width: calc(50% - (var(--space-m) / 2));
-}
-
-.field-group.one-third-width {
-    width: calc(33.333% - (var(--space-m) * 2 / 3));
-}
-
-.field-group label {
-    display: block;
-    margin-bottom: var(--space-xs);
-    width: 100%;
-}
-
-.field-group input,
-.field-group textarea {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.form-panel footer .action-group {
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--space-s);
-}
-
-/* ========================================================================= */
-/* SUBPANEL GRID LAYOUT */
-.subpanel-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--space-m);
-    padding: var(--space-m);
-}
-
-.subpanel-grid-wrapper .grid-toolbar {
-    padding: var(--space-s) var(--space-m);
-    border-top: 1px solid var(--border-colour-secondary);
-}
-
-.subpanel-grid-wrapper .grid-toolbar nav {
-    display: flex;
-    justify-content: space-between;
+/* 8. BUTTONS & UTILS */
+.btn {
+    display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: var(--space-m);
+    justify-content: center;
+    padding: var(--space-xs) var(--space-m);
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.grid-toolbar .pagination-controls {
-    display: flex;
-    align-items: center;
-    gap: var(--space-s);
-}
-
-.grid-toolbar .filter-controls {
-    display: flex;
-    align-items: center;
-    gap: var(--space-s);
-    flex-wrap: wrap;
-}
-
-.subpanel {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.subpanel header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: var(--space-s);
-}
-
-.subpanel .content {
-    flex-grow: 1;
-    margin-bottom: var(--space-m);
-}
-
-.subpanel footer {
-    margin-top: auto;
-}
-
-/* ========================================================================= */
-/* UTILITY */
-
-.hidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
+.btn.icon-only {
+    width: 32px;
+    height: 32px;
     padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap; 
 }
+
+/* Utilities */
+.hidden { display: none; }
+.flex-wrap { display: flex; flex-wrap: wrap; }
+.gap-m { gap: var(--space-m); }

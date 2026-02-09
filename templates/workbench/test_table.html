@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-{% import "components/table.html" as Table %}
 {% import "components/panel.html" as Panel %}
+{% import "components/table.html" as Table %}
 
 {% block content %}
-<article class="panel">
-    <header>
-        <h1>User Management</h1>
-        <p class="subtitle">System Administration</p>
-    </header>
 
-    <section class="content">
-        {{ Table.render(columns=columns, rows=rows, pagination=pagination) }}
-    </section>
-</article>
+{% call Panel.render(
+    type='article',
+    header={'title': 'User Management', 'subtitle': 'System Administration'},
+    pagination=pagination
+) %}
+    
+    {{ Table.render(columns=columns, rows=rows, actions=actions) }}
+
+{% endcall %}
+
 {% endblock %}

@@ -3,7 +3,7 @@
     <form method="dialog">
         <header>
             <h1>{{ data.title }}</h1>
-            <button class="btn-close" aria-label="Close">&times;</button>
+            <button class="btn btn-close" aria-label="Close">&times;</button>
         </header>
         
         <section class="content">
@@ -22,9 +22,9 @@
         <menu>
             {% for action in data.actions %}
                 {% if action.role == 'cancel' %}
-                    <button value="cancel" class="control {{ action.class }}">{{ action.label }}</button>
+                    <button value="cancel" class="btn {{ action.class }}">{{ action.label }}</button>
                 {% else %}
-                    <button type="button" class="control {{ action.class }}">{{ action.label }}</button>
+                    <button type="button" class="btn {{ action.class }}">{{ action.label }}</button>
                 {% endif %}
             {% endfor %}
         </menu>
